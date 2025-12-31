@@ -1,114 +1,91 @@
 /* Architecture Section */
 .architecture {
-  padding: 6rem 0;
-  background: #000000;
-  position: relative;
+  padding: 120px 24px;
+  background: linear-gradient(180deg, #0a0a0f 0%, #000 100%);
 }
 
 .architecture-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .architecture-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 60px;
 }
 
 .architecture-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #4A90E2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .architecture-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: stretch;
+  gap: 32px;
 }
 
 .architecture-panel {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 32px;
   transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .architecture-panel:hover {
-  border-color: rgba(74, 144, 226, 0.3);
-  background: rgba(74, 144, 226, 0.05);
+  border-color: rgba(74, 144, 226, 0.2);
   transform: translateY(-4px);
 }
 
 .panel-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .panel-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0;
-}
-
-.panel-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
 }
 
 .panel-description {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 24px;
 }
 
-/* Privacy Technology Visualization */
-.tech-visualization {
-  flex: 1;
+.tech-visualization,
+.compliance-visualization {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-top: auto;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
 }
 
 .onion-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #4A90E2, #357ABD);
-  width: 80px;
-  height: 80px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 32px rgba(74, 144, 226, 0.3);
+  font-size: 48px;
+  margin-right: 24px;
 }
 
 .tech-flow {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tech-step {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
 }
 
 .step-icon {
@@ -118,94 +95,43 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.step-icon.solana {
-  background: linear-gradient(135deg, #9945FF, #14F195);
-  color: white;
-}
-
-.step-icon.metamask {
-  background: linear-gradient(135deg, #F6851B, #E2761B);
-  color: white;
-}
-
-.step-icon.anchor {
-  background: linear-gradient(135deg, #4267B2, #365899);
-  color: white;
-}
-
-.step-icon.raydium {
-  background: linear-gradient(135deg, #C2B2FF, #9C4FFF);
-  color: white;
-}
-
-.step-icon.jupiter {
-  background: linear-gradient(135deg, #FFC837, #FF9500);
-  color: white;
-}
-
-.step-icon.wire {
-  background: linear-gradient(135deg, #00D9FF, #0088CC);
-  color: white;
+  background: rgba(74, 144, 226, 0.1);
+  color: #4A90E2;
+  transition: all 0.2s;
 }
 
 .step-icon:hover {
-  transform: translateY(-2px) scale(1.05);
-}
-
-/* Compliance Visualization */
-.compliance-visualization {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
+  background: rgba(74, 144, 226, 0.2);
+  transform: scale(1.1);
 }
 
 .compliance-flow {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  position: relative;
-}
-
-.compliance-flow::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 2px;
-  height: 60px;
-  background: linear-gradient(180deg, transparent, #4A90E2, transparent);
-  border-radius: 1px;
+  gap: 24px;
 }
 
 .secure-box {
   background: rgba(74, 144, 226, 0.1);
-  border: 2px solid #4A90E2;
+  border: 1px solid rgba(74, 144, 226, 0.2);
   border-radius: 12px;
-  padding: 1.5rem;
-  position: relative;
-  min-width: 140px;
+  padding: 20px;
+  text-align: center;
 }
 
 .secure-label {
-  color: #4A90E2;
+  font-size: 12px;
   font-weight: 600;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-  text-align: center;
+  color: #4A90E2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
 .secure-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .audit-icon {
@@ -214,131 +140,44 @@
 
 .compliance-icons {
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 8px;
 }
 
-.compliance-step {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+.user-box {
+  text-align: center;
+}
+
+.user-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.compliance-step:hover {
-  transform: scale(1.1);
-}
-
-.user-box {
-  background: rgba(34, 197, 94, 0.1);
-  border: 2px solid #22c55e;
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 100px;
-}
-
-.user-icon {
-  color: #22c55e;
+  color: white;
+  margin: 0 auto 8px;
 }
 
 .user-label {
-  color: #22c55e;
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .architecture-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .architecture-panel {
-    padding: 2rem;
-  }
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 @media (max-width: 768px) {
   .architecture {
-    padding: 4rem 0;
+    padding: 80px 20px;
   }
-  
-  .architecture-container {
-    padding: 0 1rem;
-  }
-  
+
   .architecture-title {
-    font-size: 2.5rem;
+    font-size: 36px;
   }
-  
+
+  .architecture-content {
+    grid-template-columns: 1fr;
+  }
+
   .architecture-panel {
-    padding: 1.5rem;
-  }
-  
-  .panel-title {
-    font-size: 1.25rem;
-  }
-  
-  .panel-description {
-    font-size: 0.9rem;
-  }
-  
-  .onion-icon {
-    font-size: 3rem;
-    width: 64px;
-    height: 64px;
-  }
-  
-  .tech-flow {
-    gap: 0.75rem;
-  }
-  
-  .step-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .compliance-flow {
-    gap: 2rem;
-  }
-  
-  .secure-box, .user-box {
-    padding: 1rem;
-    min-width: 120px;
+    padding: 24px;
   }
 }
-
-@media (max-width: 480px) {
-  .architecture-title {
-    font-size: 2rem;
-  }
-  
-  .tech-flow {
-    gap: 0.5rem;
-  }
-  
-  .step-icon {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .compliance-flow {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .compliance-flow::before {
-    width: 60px;
-    height: 2px;
-    transform: translateX(-50%) translateY(-50%) rotate(90deg);
-  }
-} 
