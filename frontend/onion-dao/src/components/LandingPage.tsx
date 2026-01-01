@@ -5,7 +5,6 @@ import FAQ from './FAQ'
 import Architecture from './Architecture'
 import AdvancedFeatures from './AdvancedFeatures'
 import UseCases from './UseCases'
-import TechnicalDemo from './TechnicalDemo'
 import GettingStarted from './GettingStarted'
 import Footer from './Footer'
 
@@ -18,7 +17,6 @@ const LandingPage: React.FC = () => {
       <Architecture />
       <AdvancedFeatures />
       <UseCases />
-      <TechnicalDemo />
       <GettingStarted />
       <Footer />
     </>

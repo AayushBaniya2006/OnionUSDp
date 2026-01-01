@@ -1,7 +1,7 @@
-/* Use Cases Section */
+/* Use Cases Section - Xtract Style */
 .use-cases {
   padding: 120px 24px;
-  background: linear-gradient(180deg, #000 0%, #0a0a0f 100%);
+  background: var(--bg-primary);
 }
 
 .use-cases-container {
@@ -12,63 +12,172 @@
 .use-cases-header {
   text-align: center;
   margin-bottom: 60px;
+  animation: revealUp 0.6s ease-out;
 }
 
 .use-cases-title {
-  font-size: 48px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff 0%, #4A90E2 100%);
+  font-size: 52px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--primary-pink) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 16px;
+  letter-spacing: -2px;
 }
 
 .use-cases-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-tertiary);
   font-size: 18px;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
+/* Use Cases Grid */
 .use-cases-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  animation: revealUp 0.6s ease-out 0.2s both;
 }
 
+/* Use Case Card */
 .use-case-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
+  --accent-color: var(--primary-pink);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 24px;
   padding: 32px;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-spring);
 }
 
 .use-case-card:hover {
-  border-color: rgba(74, 144, 226, 0.3);
-  transform: translateY(-4px);
+  border-color: var(--accent-color, var(--primary-border));
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(129, 74, 200, 0.12);
 }
 
-.use-case-icon {
-  font-size: 32px;
-  margin-bottom: 16px;
+/* Card Icon */
+.card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--accent-color) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+  transition: var(--transition-spring);
 }
 
-.use-case-title {
-  font-size: 18px;
-  font-weight: 700;
+.use-case-card:hover .card-icon {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+/* Card Title & Description */
+.card-title {
+  font-size: 22px;
+  font-weight: 600;
   color: white;
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
 }
 
-.use-case-description {
-  color: rgba(255, 255, 255, 0.6);
+.card-description {
+  font-size: 15px;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+
+/* Card Features - Checklist */
+.card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 14px;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
+.feature-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--accent-color, var(--success-green));
+}
+
+/* Card Button */
+.card-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 40%, transparent);
+  border-radius: 14px;
+  color: var(--accent-color);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-spring);
+  font-family: 'Figtree', sans-serif;
+  margin-top: auto;
+}
+
+.card-button:hover {
+  background: var(--accent-color);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+
+.card-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Animations */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
   .use-cases-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .use-cases-grid .use-case-card:last-child {
+    grid-column: span 2;
+    max-width: 50%;
+    margin: 0 auto;
   }
 }
 
@@ -79,9 +188,41 @@
 
   .use-cases-title {
     font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  .use-cases-header {
+    margin-bottom: 40px;
   }
 
   .use-cases-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .use-cases-grid .use-case-card:last-child {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+
+  .use-case-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .use-cases-title {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+  }
+
+  .card-title {
+    font-size: 18px;
   }
 }

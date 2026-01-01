@@ -1,7 +1,7 @@
-/* Architecture Section */
+/* Architecture Section - Xtract Style */
 .architecture {
   padding: 120px 24px;
-  background: linear-gradient(180deg, #0a0a0f 0%, #000 100%);
+  background: var(--bg-primary);
 }
 
 .architecture-container {
@@ -12,49 +12,60 @@
 .architecture-header {
   text-align: center;
   margin-bottom: 60px;
+  animation: revealUp 0.6s ease-out;
 }
 
 .architecture-title {
-  font-size: 48px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff 0%, #4A90E2 100%);
+  font-size: 52px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--primary-pink) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -2px;
 }
 
 .architecture-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 28px;
+  animation: revealUp 0.6s ease-out 0.2s both;
 }
 
 .architecture-panel {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
   padding: 32px;
-  transition: all 0.3s ease;
+  transition: var(--transition-spring);
 }
 
 .architecture-panel:hover {
-  border-color: rgba(74, 144, 226, 0.2);
+  border-color: var(--primary-border);
   transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(129, 74, 200, 0.1);
 }
 
 .panel-header {
   margin-bottom: 20px;
 }
 
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .panel-title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 600;
   color: white;
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .panel-description {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-tertiary);
   font-size: 15px;
   line-height: 1.7;
   margin-bottom: 24px;
@@ -66,8 +77,9 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  border: 1px solid var(--border-tertiary);
 }
 
 .onion-icon {
@@ -89,20 +101,22 @@
 }
 
 .step-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(74, 144, 226, 0.1);
-  color: #4A90E2;
-  transition: all 0.2s;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary-pink);
+  transition: var(--transition-spring);
 }
 
 .step-icon:hover {
-  background: rgba(74, 144, 226, 0.2);
+  background: rgba(129, 74, 200, 0.2);
   transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(129, 74, 200, 0.3);
 }
 
 .compliance-flow {
@@ -112,17 +126,17 @@
 }
 
 .secure-box {
-  background: rgba(74, 144, 226, 0.1);
-  border: 1px solid rgba(74, 144, 226, 0.2);
-  border-radius: 12px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  border-radius: 14px;
   padding: 20px;
   text-align: center;
 }
 
 .secure-label {
   font-size: 12px;
-  font-weight: 600;
-  color: #4A90E2;
+  font-weight: 700;
+  color: var(--primary-pink);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 12px;
@@ -135,7 +149,7 @@
 }
 
 .audit-icon {
-  color: #4A90E2;
+  color: var(--primary-pink);
 }
 
 .compliance-icons {
@@ -148,20 +162,37 @@
 }
 
 .user-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   margin: 0 auto 8px;
+  transition: var(--transition-spring);
+}
+
+.user-icon:hover {
+  border-color: var(--primary-border);
 }
 
 .user-label {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-tertiary);
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -171,6 +202,11 @@
 
   .architecture-title {
     font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  .architecture-header {
+    margin-bottom: 40px;
   }
 
   .architecture-content {
@@ -179,5 +215,12 @@
 
   .architecture-panel {
     padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .architecture-title {
+    font-size: 28px;
+    letter-spacing: -1px;
   }
 }

@@ -1,10 +1,7 @@
-/* Login Page - Enhanced Design */
+/* Login Page - Xtract Style */
 .login-page {
   min-height: 100vh;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(74, 144, 226, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(26, 35, 126, 0.15) 0%, transparent 50%),
-    linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+  background: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,40 +24,42 @@
 .floating-orb {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(26, 35, 126, 0.1));
-  backdrop-filter: blur(1px);
-  animation: float 20s infinite ease-in-out;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: floatOrb 20s infinite ease-in-out;
 }
 
 .orb-1 {
-  width: 300px;
-  height: 300px;
-  top: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(129, 74, 200, 0.4) 0%, transparent 70%);
+  top: -200px;
   left: -150px;
   animation-delay: 0s;
 }
 
 .orb-2 {
-  width: 200px;
-  height: 200px;
-  top: 20%;
-  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(223, 122, 254, 0.3) 0%, transparent 70%);
+  top: 30%;
+  right: -150px;
   animation-delay: -7s;
 }
 
 .orb-3 {
-  width: 400px;
-  height: 400px;
-  bottom: -200px;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(129, 74, 200, 0.25) 0%, transparent 70%);
+  bottom: -250px;
+  left: 40%;
   animation-delay: -14s;
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -30px) rotate(120deg); }
-  66% { transform: translate(-20px, 20px) rotate(240deg); }
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
 /* Main Container */
@@ -74,14 +73,14 @@
 /* Header Section */
 .login-header {
   text-align: center;
-  margin-bottom: 4rem;
-  animation: fadeInUp 0.8s ease-out;
+  margin-bottom: 56px;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
-@keyframes fadeInUp {
+@keyframes revealUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(60px);
   }
   to {
     opacity: 1;
@@ -93,22 +92,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 14px;
+  margin-bottom: 32px;
 }
 
 .logo-icon {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #1A237E 100%);
-  border-radius: 20px;
+  width: 56px;
+  height: 56px;
+  background: var(--gradient-primary);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 
-    0 8px 32px rgba(74, 144, 226, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(129, 74, 200, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -130,43 +127,40 @@
 }
 
 .brand-text {
-  font-size: 2rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 0%, #4A90E2 100%);
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, var(--primary-pink) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.5px;
 }
 
 .login-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 20px;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -2px;
 }
 
 .title-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, #4A90E2 0%, #1A237E 100%);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .login-subtitle {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 600px;
+  font-size: 18px;
+  color: var(--text-tertiary);
+  max-width: 500px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
   font-weight: 400;
 }
 
@@ -174,24 +168,23 @@
 .account-types {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  margin-bottom: 3rem;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+  gap: 28px;
+  margin-bottom: 40px;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .account-card {
-  background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 2.5rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-primary);
+  border-radius: 20px;
+  padding: 32px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition-spring);
   position: relative;
   overflow: hidden;
   text-align: left;
-  min-height: 580px;
+  min-height: 520px;
   display: flex;
   flex-direction: column;
 }
@@ -202,23 +195,20 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-purple), var(--primary-pink), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .account-card:hover::before {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .account-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(74, 144, 226, 0.4);
-  box-shadow: 
-    0 20px 60px rgba(74, 144, 226, 0.15),
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
+  border-color: var(--primary-border);
+  box-shadow: 0 25px 70px rgba(129, 74, 200, 0.15);
 }
 
 .card-glow {
@@ -227,7 +217,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(74, 144, 226, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(129, 74, 200, 0.1) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -241,118 +231,120 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
+  border: none;
+  padding: 0;
 }
 
 .card-icon {
-  width: 72px;
-  height: 72px;
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(26, 35, 126, 0.2) 100%);
-  border-radius: 20px;
+  width: 64px;
+  height: 64px;
+  background: var(--primary-light);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4A90E2;
-  border: 1px solid rgba(74, 144, 226, 0.3);
-  transition: all 0.3s ease;
+  color: var(--primary-pink);
+  border: 1px solid var(--primary-border);
+  transition: var(--transition-spring);
 }
 
 .account-card:hover .card-icon {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.3) 0%, rgba(26, 35, 126, 0.3) 100%);
-  box-shadow: 0 8px 32px rgba(74, 144, 226, 0.4);
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(129, 74, 200, 0.3);
 }
 
 .card-badge {
-  padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(26, 35, 126, 0.2) 100%);
-  border: 1px solid rgba(74, 144, 226, 0.3);
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #4A90E2;
+  padding: 8px 16px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-pink);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.5px;
 }
 
 .card-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1rem;
+  font-size: 26px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
   line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .card-description {
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  font-size: 1rem;
+  color: var(--text-tertiary);
+  margin-bottom: 28px;
+  line-height: 1.7;
+  font-size: 15px;
 }
 
 .card-features {
-  margin-bottom: 2rem;
+  margin-bottom: 28px;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-tertiary);
+  transition: var(--transition-normal);
 }
 
 .feature-item:hover {
-  background: rgba(74, 144, 226, 0.1);
-  border-color: rgba(74, 144, 226, 0.2);
+  background: rgba(129, 74, 200, 0.05);
+  border-color: var(--primary-border);
 }
 
 .feature-icon {
-  font-size: 1.25rem;
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .feature-item span {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 /* Home Button */
 .home-button {
   position: fixed;
-  top: 2rem;
-  left: 2rem;
+  top: 24px;
+  left: 24px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-spring);
   backdrop-filter: blur(10px);
   z-index: 100;
+  font-family: 'Figtree', sans-serif;
 }
 
 .home-button:hover {
-  background: rgba(74, 144, 226, 0.2);
-  border-color: rgba(74, 144, 226, 0.4);
-  color: #ffffff;
+  background: var(--bg-card-hover);
+  border-color: var(--border-secondary);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.15);
 }
 
 .card-button {
@@ -360,60 +352,54 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 14px 20px;
   border: none;
-  border-radius: 16px;
+  border-radius: 14px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 15px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition-spring);
   position: relative;
   overflow: hidden;
   margin-top: auto;
+  font-family: 'Figtree', sans-serif;
 }
 
 .card-button-text {
   flex: 1;
   text-align: left;
-  margin-left: 20px;
+  margin-left: 16px;
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-  color: #ffffff;
-  box-shadow: 
-    0 4px 20px rgba(74, 144, 226, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 20px rgba(129, 74, 200, 0.3);
 }
 
 .primary-button:hover {
   transform: translateY(-2px);
-  box-shadow: 
-    0 8px 30px rgba(74, 144, 226, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(129, 74, 200, 0.4);
 }
 
 .secondary-button {
-  background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-card);
+  color: white;
+  border: 1px solid var(--border-primary);
 }
 
 .secondary-button:hover {
-  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-  border-color: #4A90E2;
+  background: var(--gradient-primary);
+  border-color: transparent;
   transform: translateY(-2px);
-  box-shadow: 
-    0 8px 30px rgba(74, 144, 226, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(129, 74, 200, 0.3);
 }
 
 /* Auth Toggle */
 .auth-toggle {
   flex-direction: column;
   text-align: center;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
 
 .toggle-container {
@@ -421,137 +407,149 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 14px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   backdrop-filter: blur(10px);
 }
 
 .toggle-text {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-size: 14px;
 }
 
 .toggle-btn {
   background: transparent;
-  border: 1px solid #4A90E2;
-  color: #4A90E2;
-  font-size: 0.9rem;
+  border: 1px solid var(--primary-border);
+  color: var(--primary-pink);
+  font-size: 14px;
   font-weight: 600;
-  padding: 0.5rem 1.5rem;
-  border-radius: 50px;
+  padding: 10px 24px;
+  border-radius: 100px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-spring);
+  font-family: 'Figtree', sans-serif;
 }
 
 .toggle-btn:hover {
-  background: #4A90E2;
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(129, 74, 200, 0.3);
 }
 
 /* Corporation Card Specific */
 .corporation-card:hover {
-  border-color: rgba(74, 144, 226, 0.5);
+  border-color: var(--primary-border);
 }
 
 .corporation-card .card-badge {
-  background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 152, 0, 0.2) 100%);
-  border-color: rgba(255, 193, 7, 0.3);
-  color: #FFC107;
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: var(--warning-orange);
 }
 
 /* Employee Card Specific */
 .employee-card:hover {
-  border-color: rgba(76, 175, 80, 0.5);
+  border-color: rgba(34, 197, 94, 0.4);
 }
 
 .employee-card .card-badge {
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(67, 160, 71, 0.2) 100%);
-  border-color: rgba(76, 175, 80, 0.3);
-  color: #4CAF50;
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: var(--success-green);
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .login-title {
-    font-size: 3rem;
+    font-size: 44px;
   }
-  
+
   .account-types {
-    gap: 2rem;
+    gap: 24px;
   }
 }
 
 @media (max-width: 768px) {
   .login-page {
-    padding: 1rem;
+    padding: 16px;
   }
-  
+
   .account-types {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 20px;
   }
-  
+
   .login-title {
-    font-size: 2.5rem;
+    font-size: 36px;
+    letter-spacing: -1.5px;
   }
-  
+
   .brand-text {
-    font-size: 1.5rem;
+    font-size: 22px;
   }
-  
+
   .account-card {
-    padding: 2rem;
+    padding: 24px;
+    min-height: auto;
   }
-  
+
   .card-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 14px;
   }
-  
+
   .toggle-container {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 12px;
+  }
+
+  .home-button {
+    top: 16px;
+    left: 16px;
+    padding: 8px 14px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .login-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 32px;
   }
-  
+
   .login-title {
-    font-size: 2rem;
+    font-size: 28px;
+    letter-spacing: -1px;
   }
-  
+
   .login-subtitle {
-    font-size: 1rem;
+    font-size: 15px;
   }
-  
+
   .account-card {
-    padding: 1.5rem;
+    padding: 20px;
   }
-  
+
   .card-icon {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
   }
-  
+
   .card-title {
-    font-size: 1.5rem;
+    font-size: 22px;
   }
-  
+
   .logo-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
-  
+
   .floating-orb {
-    display: none;
+    opacity: 0.3;
   }
-} 
+}

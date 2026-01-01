@@ -27,7 +27,7 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className="use-cases">
+    <section className="use-cases" id="use-cases">
       <div className="use-cases-container">
         <div className="use-cases-header">
           <h2 className="use-cases-title">Use Cases</h2>

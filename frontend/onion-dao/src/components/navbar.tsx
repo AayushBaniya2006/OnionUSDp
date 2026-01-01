@@ -15,20 +15,17 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo and Brand */}
-        <div className="navbar-brand">
-          <Link to="/" className="logo">
-            <div className="logo-icon">🧅</div>
-            <span className="brand-text">OnionUSD-P</span>
-          </Link>
-        </div>
+        {/* Logo */}
+        <a href="/" className="navbar-brand">
+          OnionUSD-P
+        </a>
 
         {/* Navigation Links */}
         <div className="nav-links">
-          <a href="#features" className="nav-link">Features</a>
           <a href="#architecture" className="nav-link">Architecture</a>
-          <a href="#docs" className="nav-link">Docs</a>
-          <a href="#api" className="nav-link">API</a>
+          <a href="#features" className="nav-link">Features</a>
+          <a href="#use-cases" className="nav-link">Use Cases</a>
+          <a href="#getting-started" className="nav-link">Get Started</a>
         </div>
 
         {/* Right Side Actions */}
@@ -48,14 +45,9 @@ const Navbar: React.FC = () => {
               </div>
             </>
           ) : (
-            <>
-              <button className="btn btn-secondary">
-                View Demo
-              </button>
-              <Link to="/login" className="btn btn-primary">
-                Get Started
-              </Link>
-            </>
+            <Link to="/login" className="btn btn-primary">
+              Get Started
+            </Link>
           )}
         </div>
       </div>

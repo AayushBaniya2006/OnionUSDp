@@ -45,7 +45,7 @@ const GettingStarted: React.FC = () => {
   ];
 
   return (
-    <section className="getting-started">
+    <section className="getting-started" id="getting-started">
       <div className="getting-started-container">
         <div className="getting-started-header">
           <h2 className="getting-started-title">Getting Started</h2>

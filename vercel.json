@@ -1,7 +1,5 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "framework": "vite",
-  "rootDirectory": "frontend/onion-dao"
+  "buildCommand": "cd frontend/onion-dao && npm install && npm run build",
+  "outputDirectory": "frontend/onion-dao/dist",
+  "framework": "vite"
 }
