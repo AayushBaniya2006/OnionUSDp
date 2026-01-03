@@ -7,6 +7,8 @@ import LoginPage from './components/auth/LoginPage'
 import CorporationDashboard from './components/dashboards/CorporationDashboard'
 import EmployeeDashboard from './components/dashboards/EmployeeDashboard'
 import LandingPage from './components/LandingPage'
+import PrivacyPolicy from './components/PrivacyPolicy'
+import TermsOfService from './components/TermsOfService'
 import './App.css'
 
 // Landing page component (the original content)
@@ -57,6 +59,8 @@ function App() {
             {/* Public routes */}
             <Route path="/" element={<LandingPageComponent />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
             
             {/* Protected routes */}
             <Route 

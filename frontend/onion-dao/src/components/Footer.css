@@ -87,7 +87,7 @@
 /* Footer Links - Right Side Grid */
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 
@@ -126,6 +126,16 @@
 
 .footer-link:hover {
   color: var(--primary-pink);
+}
+
+/* Footer link buttons - styled like links */
+.footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
 }
 
 /* Footer Bottom */

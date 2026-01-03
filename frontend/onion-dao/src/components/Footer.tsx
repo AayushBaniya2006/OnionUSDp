@@ -1,7 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -16,45 +24,33 @@ const Footer: React.FC = () => {
               Hide amounts, not compliance.
             </p>
           </div>
-          
+
           <div className="footer-links">
             <div className="link-column">
               <h4 className="column-title">Product</h4>
               <ul className="link-list">
                 <li><a href="#features" className="footer-link">Features</a></li>
                 <li><a href="#architecture" className="footer-link">Architecture</a></li>
-                <li><a href="#" className="footer-link">Pricing</a></li>
-                <li><a href="#" className="footer-link">Security</a></li>
+                <li><button onClick={() => scrollToSection('faq')} className="footer-link footer-link-btn">Pricing</button></li>
+                <li><button onClick={() => scrollToSection('architecture')} className="footer-link footer-link-btn">Security</button></li>
               </ul>
             </div>
-            
+
             <div className="link-column">
               <h4 className="column-title">Developers</h4>
               <ul className="link-list">
-                <li><a href="#docs" className="footer-link">Documentation</a></li>
-                <li><a href="#api" className="footer-link">API Reference</a></li>
-                <li><a href="#" className="footer-link">SDK</a></li>
-                <li><a href="#" className="footer-link">Examples</a></li>
+                <li><a href="#getting-started" className="footer-link">Documentation</a></li>
+                <li><a href="#features" className="footer-link">API Reference</a></li>
               </ul>
             </div>
-            
-            <div className="link-column">
-              <h4 className="column-title">Resources</h4>
-              <ul className="link-list">
-                <li><a href="#" className="footer-link">Blog</a></li>
-                <li><a href="#" className="footer-link">Whitepaper</a></li>
-                <li><a href="#" className="footer-link">Community</a></li>
-                <li><a href="#" className="footer-link">Support</a></li>
-              </ul>
-            </div>
-            
+
             <div className="link-column">
               <h4 className="column-title">Company</h4>
               <ul className="link-list">
-                <li><a href="#" className="footer-link">About</a></li>
-                <li><a href="#" className="footer-link">Privacy Policy</a></li>
-                <li><a href="#" className="footer-link">Terms of Service</a></li>
-                <li><a href="#" className="footer-link">Contact</a></li>
+                <li><button onClick={() => scrollToSection('hero')} className="footer-link footer-link-btn">About</button></li>
+                <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="footer-link">Terms of Service</Link></li>
+                <li><a href="mailto:thisisaayushbaniya@gmail.com" className="footer-link">Contact</a></li>
               </ul>
             </div>
           </div>

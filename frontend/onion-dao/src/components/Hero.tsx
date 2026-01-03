@@ -3,7 +3,7 @@ import './Hero.css';
 
 const Hero: React.FC = () => {
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       {/* Animated Gradient Orbs */}
       <div className="hero-orbs">
         <div className="orb orb-1"></div>

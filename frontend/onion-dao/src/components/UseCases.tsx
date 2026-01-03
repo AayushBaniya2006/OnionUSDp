@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './UseCases.css';
 
 const UseCases: React.FC = () => {
+  const navigate = useNavigate();
   const useCases = [
     {
       title: "Merchant Payments",
@@ -54,7 +56,7 @@ const UseCases: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <button className="card-button">
+              <button className="card-button" onClick={() => navigate('/login')}>
                 Learn More
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>

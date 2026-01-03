@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TypingAnimation from './TypingAnimation';
 import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
   const [showSubtitle, setShowSubtitle] = useState(false);
 
   const handleTypingComplete = () => {
@@ -137,7 +139,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
-          <button className="btn btn-primary process-btn animated-button" style={{'--delay': '0.9s'} as React.CSSProperties}>
+          <button className="btn btn-primary process-btn animated-button" style={{'--delay': '0.9s'} as React.CSSProperties} onClick={() => navigate('/login')}>
             Process Payroll
           </button>
 

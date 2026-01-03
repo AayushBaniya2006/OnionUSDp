@@ -100,7 +100,7 @@ const LoginPage: React.FC = () => {
                 <span>Employee management</span>
               </div>
             </div>
-            <button className="card-button primary-button">
+            <button className="card-button primary-button" onClick={() => setSelectedType('corporation')}>
               <span className="card-button-text">Continue as Corporation</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
@@ -140,7 +140,7 @@ const LoginPage: React.FC = () => {
                 <span>Secure authentication</span>
               </div>
             </div>
-            <button className="card-button primary-button">
+            <button className="card-button primary-button" onClick={() => setSelectedType('employee')}>
               <span className="card-button-text">Continue as Employee</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>

@@ -610,7 +610,7 @@ const EmployeeDashboard: React.FC = () => {
                     <div className="option-content">
                       <h4>Authenticator App</h4>
                       <p>Use Google Authenticator, Authy, or similar apps for secure time-based codes.</p>
-                      <button className="btn btn-primary btn-small">
+                      <button className="btn btn-primary btn-small" onClick={() => alert('2FA Authenticator setup coming soon! This is a demo feature.')}>
                         <span className="material-icons">qr_code</span>
                         Set Up Authenticator
                       </button>
@@ -623,7 +623,7 @@ const EmployeeDashboard: React.FC = () => {
                     <div className="option-content">
                       <h4>SMS Verification</h4>
                       <p>Receive verification codes via text message to your registered phone number.</p>
-                      <button className="btn btn-secondary btn-small">
+                      <button className="btn btn-secondary btn-small" onClick={() => alert('2FA SMS setup coming soon! This is a demo feature.')}>
                         <span className="material-icons">phone</span>
                         Set Up SMS
                       </button>
