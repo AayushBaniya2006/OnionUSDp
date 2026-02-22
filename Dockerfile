@@ -12,7 +12,7 @@ COPY frontend/onion-dao/package*.json ./
 # Install dependencies
 RUN npm ci
 
-# Copy source code
+# Copy source code  
 COPY frontend/onion-dao/ .
 
 # Build arguments for environment variables (passed at build time)

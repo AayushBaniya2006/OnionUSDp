@@ -22,7 +22,7 @@
 }
 
 .back-link:hover {
-  color: var(--primary-pink);
+  color: var(--accent-primary);
 }
 
 .back-link svg {
@@ -95,7 +95,7 @@
 }
 
 .legal-section a {
-  color: var(--primary-pink);
+  color: var(--accent-primary);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
