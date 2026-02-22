@@ -34,8 +34,9 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/OnionUSDp.git"
+    "url": "git+https://github.com/AayushBaniya2006/OnionUSDp.git"
   },
+  "homepage": "https://github.com/AayushBaniya2006/OnionUSDp#readme",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"

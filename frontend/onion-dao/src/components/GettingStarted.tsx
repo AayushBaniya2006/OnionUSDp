@@ -26,7 +26,7 @@ const GettingStarted: React.FC = () => {
       title: "Users",
       subtitle: "Send private payments",
       description: "Get started with OnionUSD-P in minutes",
-      icon: "👤",
+      icon: "wallet",
       steps: [
         "Install a compatible wallet",
         "Acquire OnionUSD-P tokens",
@@ -39,7 +39,7 @@ const GettingStarted: React.FC = () => {
       title: "Developers",
       subtitle: "Integrate OnionUSD-P",
       description: "Build privacy into your applications",
-      icon: "💻",
+      icon: "code",
       steps: [
         "Install the OnionUSD-P SDK",
         "Set up testnet environment",
@@ -52,7 +52,7 @@ const GettingStarted: React.FC = () => {
       title: "Businesses",
       subtitle: "Accept payments",
       description: "Enable private payments for your business",
-      icon: "🏢",
+      icon: "business",
       steps: [
         "Sign up for business account",
         "Integrate payment APIs",
@@ -77,7 +77,9 @@ const GettingStarted: React.FC = () => {
           {tracks.map((track, index) => (
             <div key={index} className="track-card">
               <div className="track-header">
-                <div className="track-icon">{track.icon}</div>
+                <div className="track-icon">
+                  <span className="material-icons">{track.icon}</span>
+                </div>
                 <div className="track-info">
                   <h3 className="track-title">{track.title}</h3>
                   <p className="track-subtitle">{track.subtitle}</p>
@@ -112,16 +114,22 @@ const GettingStarted: React.FC = () => {
           </p>
           <div className="ecosystem-badges">
             <div className="ecosystem-badge">
-              <span className="badge-icon">⚡</span>
-              <span className="badge-text">Sub-second finality</span>
+              <span className="badge-icon">
+                <span className="material-icons">speed</span>
+              </span>
+              <span className="badge-text">Fast confirmations</span>
             </div>
             <div className="ecosystem-badge">
-              <span className="badge-icon">💰</span>
-              <span className="badge-text">Ultra-low fees</span>
+              <span className="badge-icon">
+                <span className="material-icons">payments</span>
+              </span>
+              <span className="badge-text">Low fees</span>
             </div>
             <div className="ecosystem-badge">
-              <span className="badge-icon">🔒</span>
-              <span className="badge-text">Battle-tested security</span>
+              <span className="badge-icon">
+                <span className="material-icons">security</span>
+              </span>
+              <span className="badge-text">Proven security</span>
             </div>
           </div>
         </div>

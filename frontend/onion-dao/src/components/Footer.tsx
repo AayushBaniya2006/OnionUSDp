@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-logo">
-              <div className="logo-icon">🧅</div>
+              <div className="logo-icon material-icons">account_balance</div>
               <span className="brand-text">OnionUSD-P</span>
             </div>
             <p className="footer-description">
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="compliance-badges">
               <div className="compliance-badge">
-                <span className="badge-text">GENIUS Act Ready</span>
+                <span className="badge-text">GDPR Ready</span>
               </div>
               <div className="compliance-badge">
                 <span className="badge-text">MiCA Compliant</span>
