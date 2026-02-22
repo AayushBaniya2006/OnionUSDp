@@ -1,5 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  ShieldIcon,
+  ArrowRightIcon,
+  WalletIcon,
+  VerifiedIcon,
+  CheckCircleIcon
+} from './icons/CustomIcons';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -9,28 +16,28 @@ const Hero: React.FC = () => {
         <div className="hero-left">
           <div className="hero-content">
             <div className="hero-tag">
-              <span className="tag-icon material-icons">shield</span>
-              <span className="tag-text">Privacy by default</span>
+              <ShieldIcon className="tag-icon" size={18} />
+              <span className="tag-text">Private payments</span>
             </div>
 
             <h1 className="hero-title">
               <span className="title-line-1">
-                Private payments
+                Pay teams
               </span>
               <span className="title-line-2">
-                for teams
+                privately
               </span>
             </h1>
 
             <p className="hero-description">
-              Send and receive confidential salary payments without exposing transaction amounts.
-              Built on Solana with Token-2022 for privacy that actually works.
+              Send confidential salary payments on Solana without exposing amounts.
+              Privacy that works, compliance that's maintained.
             </p>
 
             <div className="hero-actions">
               <Link to="/login" className="hero-btn hero-btn-primary">
-                <span className="btn-text">Start using OnionUSD</span>
-                <span className="btn-icon material-icons">arrow_forward</span>
+                <span className="btn-text">Get started</span>
+                <ArrowRightIcon className="btn-icon" size={20} />
               </Link>
               <a href="#getting-started" className="hero-btn hero-btn-secondary">
                 <span className="btn-text">How it works</span>
@@ -39,15 +46,15 @@ const Hero: React.FC = () => {
 
             <div className="hero-trust">
               <div className="trust-item">
-                <span className="trust-icon material-icons">verified</span>
-                <span>Auditable on-chain</span>
+                <VerifiedIcon className="trust-icon" size={20} />
+                <span>On-chain auditable</span>
               </div>
               <div className="trust-item">
-                <span className="trust-icon material-icons">lock</span>
+                <WalletIcon className="trust-icon" size={20} />
                 <span>Confidential transfers</span>
               </div>
               <div className="trust-item">
-                <span className="trust-icon material-icons">speed</span>
+                <CheckCircleIcon className="trust-icon" size={20} />
                 <span>Fast confirmations</span>
               </div>
             </div>
@@ -57,12 +64,12 @@ const Hero: React.FC = () => {
         <div className="hero-right">
           <div className="hero-card">
             <div className="card-header">
-              <span className="card-icon material-icons">account_balance_wallet</span>
+              <WalletIcon className="card-icon" size={28} />
               <div className="card-title">Your wallet, encrypted</div>
             </div>
             <div className="card-content">
               <div className="card-stat">
-                <span className="stat-label">Transaction amount</span>
+                <span className="stat-label">Amount</span>
                 <span className="stat-value encrypted">••••••••</span>
               </div>
               <div className="card-stat">
@@ -76,8 +83,8 @@ const Hero: React.FC = () => {
               <div className="card-stat">
                 <span className="stat-label">Status</span>
                 <span className="stat-value confirmed">
-                  <span className="status-icon material-icons">check_circle</span>
-                  Confirmed
+                  <CheckCircleIcon className="status-icon" size={16} />
+                  <span>Confirmed</span>
                 </span>
               </div>
             </div>
@@ -99,13 +106,11 @@ const Hero: React.FC = () => {
             <div className="stat-divider"></div>
             <div className="stat-box">
               <div className="stat-number">100%</div>
-              <div className="stat-label">Private by default</div>
+              <div className="stat-label">Private</div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="hero-gradient-overlay"></div>
     </section>
   );
 };

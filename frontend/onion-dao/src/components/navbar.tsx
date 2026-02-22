@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { LogoutIcon, ArrowRightIcon } from './icons/CustomIcons';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -16,9 +17,9 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo */}
-        <a href="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           OnionUSD-P
-        </a>
+        </Link>
 
         {/* Navigation Links */}
         <div className="nav-links">
@@ -40,13 +41,15 @@ const Navbar: React.FC = () => {
                   {userProfile?.userType === 'corporation' ? userProfile.companyName : userProfile?.employeeName}
                 </span>
                 <button onClick={handleSignOut} className="btn btn-outline">
-                  Sign Out
+                  <LogoutIcon size={16} />
+                  <span>Sign Out</span>
                 </button>
               </div>
             </>
           ) : (
             <Link to="/login" className="btn btn-primary">
-              Get Started
+              Get started
+              <ArrowRightIcon size={16} />
             </Link>
           )}
         </div>
@@ -55,4 +58,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

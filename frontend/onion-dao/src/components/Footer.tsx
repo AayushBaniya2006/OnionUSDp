@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AccountBalanceIcon, CheckCircleIcon } from './icons/CustomIcons';
 import './Footer.css';
 
 const Footer: React.FC = () => {
@@ -16,12 +17,12 @@ const Footer: React.FC = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-logo">
-              <div className="logo-icon material-icons">account_balance</div>
+              <AccountBalanceIcon className="logo-icon" size={24} />
               <span className="brand-text">OnionUSD-P</span>
             </div>
             <p className="footer-description">
-              Privacy-preserving stablecoin built on Solana with Token-2022 Confidential Transfers.
-              Hide amounts, not compliance.
+              Private stablecoin on Solana with Token-2022 confidential transfers.
+              Amounts hidden, compliance maintained.
             </p>
           </div>
 
@@ -55,7 +56,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <p className="copyright">
@@ -63,9 +64,11 @@ const Footer: React.FC = () => {
             </p>
             <div className="compliance-badges">
               <div className="compliance-badge">
+                <CheckCircleIcon className="badge-icon" size={16} />
                 <span className="badge-text">GDPR Ready</span>
               </div>
               <div className="compliance-badge">
+                <CheckCircleIcon className="badge-icon" size={16} />
                 <span className="badge-text">MiCA Compliant</span>
               </div>
             </div>
@@ -76,4 +79,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

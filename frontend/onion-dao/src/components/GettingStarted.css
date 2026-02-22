@@ -1,6 +1,15 @@
-/* Getting Started Section - Xtract Style */
+/*
+ * Getting Started Section - Authentic Design
+ *
+ * Design Philosophy:
+ * - Asymmetrical grid (not perfect 3 columns)
+ * - Clean cards without glass
+ * - Custom icon styling
+ * - Organic spacing
+ */
+
 .getting-started {
-  padding: 120px 24px;
+  padding: 120px 0;
   background: var(--bg-primary);
 }
 
@@ -12,83 +21,84 @@
 .getting-started-header {
   text-align: center;
   margin-bottom: 60px;
-  animation: revealUp 0.6s ease-out;
 }
 
 .getting-started-title {
-  font-size: 52px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, var(--primary-pink) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
   margin-bottom: 16px;
-  letter-spacing: -2px;
 }
 
 .getting-started-subtitle {
-  color: var(--text-tertiary);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  color: var(--text-secondary);
   max-width: 500px;
   margin: 0 auto;
 }
 
-/* Tracks Grid - 3 Column Layout */
+/* === TRACKS GRID - Asymmetrical === */
 .tracks-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
-  margin-bottom: 60px;
-  animation: revealUp 0.6s ease-out 0.2s both;
+  margin-bottom: 48px;
 }
 
-/* Individual Track Card */
+/* === TRACK CARD === */
 .track-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: 24px;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
   padding: 32px;
   display: flex;
   flex-direction: column;
-  transition: var(--transition-spring);
+  transition: all var(--transition-base);
 }
 
 .track-card:hover {
-  border-color: var(--primary-border);
-  transform: translateY(-6px);
-  box-shadow: 0 25px 60px rgba(129, 74, 200, 0.12);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-/* Track Header */
+/* === TRACK HEADER === */
 .track-header {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
 .track-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: var(--primary-light);
-  border: 1px solid var(--primary-border);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: var(--transition-spring);
+  transition: all var(--transition-base);
 }
 
-.track-icon .material-icons {
-  font-size: 32px;
-  color: var(--primary-pink);
+.track-icon svg {
+  color: var(--accent-primary);
+  width: 24px;
+  height: 24px;
 }
 
 .track-card:hover .track-icon {
-  transform: scale(1.08);
-  box-shadow: 0 8px 25px rgba(129, 74, 200, 0.3);
+  transform: scale(1.05);
+  background: var(--accent-primary);
+}
+
+.track-card:hover .track-icon svg {
+  color: white;
 }
 
 .track-info {
@@ -96,27 +106,29 @@
 }
 
 .track-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: white;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
   margin: 0 0 4px 0;
-  letter-spacing: -0.3px;
+  line-height: var(--line-height-snug);
 }
 
 .track-subtitle {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
   margin: 0;
+  line-height: var(--line-height-normal);
 }
 
+/* === TRACK DESCRIPTION === */
 .track-description {
-  font-size: 15px;
-  color: var(--text-tertiary);
-  line-height: 1.7;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
   margin: 0 0 24px 0;
 }
 
-/* Track Steps - Numbered List */
+/* === TRACK STEPS === */
 .track-steps {
   display: flex;
   flex-direction: column;
@@ -128,100 +140,104 @@
 .track-step {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--border-tertiary);
-  border-radius: 12px;
-  transition: var(--transition-normal);
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
 }
 
 .track-step:hover {
-  border-color: var(--primary-border);
-  background: var(--primary-light);
+  border-color: var(--border-medium);
+  background: var(--bg-elevated);
 }
 
 .track-step .step-number {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
-  background: var(--primary-light);
-  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-sm);
+  background: var(--accent-primary);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--primary-pink);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: white;
   flex-shrink: 0;
 }
 
 .step-text {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
 }
 
-/* Track Button */
+/* === TRACK BUTTON === */
 .track-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 14px 20px;
+  padding: 12px 20px;
   background: transparent;
-  border: 1px solid var(--primary-border);
-  border-radius: 14px;
-  color: var(--primary-pink);
-  font-size: 14px;
-  font-weight: 600;
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
-  transition: var(--transition-spring);
-  font-family: 'Figtree', sans-serif;
-  margin-top: auto;
+  transition: all var(--transition-base);
+  font-family: var(--font-family-base);
 }
 
 .track-button:hover {
-  background: var(--gradient-primary);
-  border-color: transparent;
+  background: var(--accent-primary);
   color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(129, 74, 200, 0.3);
+  border-color: var(--accent-primary);
 }
 
-.track-button svg {
-  width: 16px;
-  height: 16px;
+.button-text {
+  font-size: var(--font-size-sm);
 }
 
-/* Ecosystem Info Section */
+.button-icon {
+  transition: transform var(--transition-fast);
+}
+
+.track-button:hover .button-icon {
+  transform: translateX(2px);
+}
+
+/* === ECOSYSTEM INFO === */
 .ecosystem-info {
   text-align: center;
-  padding: 48px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: 24px;
-  animation: revealUp 0.6s ease-out 0.4s both;
+  padding: 40px;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
 }
 
 .ecosystem-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: white;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
   margin: 0 0 12px 0;
-  letter-spacing: -0.5px;
+  line-height: var(--line-height-tight);
 }
 
 .ecosystem-description {
-  font-size: 16px;
-  color: var(--text-tertiary);
-  line-height: 1.7;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
   max-width: 600px;
   margin: 0 auto 32px;
 }
 
-/* Ecosystem Badges */
+/* === ECOSYSTEM BADGES === */
 .ecosystem-badges {
   display: flex;
   justify-content: center;
@@ -232,67 +248,45 @@
 .ecosystem-badge {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  background: var(--primary-light);
-  border: 1px solid var(--primary-border);
-  border-radius: 100px;
-  transition: var(--transition-spring);
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-base);
 }
 
 .ecosystem-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(129, 74, 200, 0.2);
+  border-color: var(--border-medium);
+  background: var(--bg-elevated);
 }
 
-.ecosystem-badge .badge-icon {
-  font-size: 18px;
+.badge-icon {
+  color: var(--accent-primary);
+  width: 20px;
+  height: 20px;
 }
 
-.ecosystem-badge .badge-icon .material-icons {
-  font-size: 24px;
-  color: var(--primary-pink);
+.badge-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
 }
 
-.ecosystem-badge .badge-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--primary-pink);
-}
-
-/* Animations */
-@keyframes revealUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .tracks-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .tracks-grid .track-card:last-child {
-    grid-column: span 2;
-    max-width: 50%;
-    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
   .getting-started {
-    padding: 80px 20px;
+    padding: 80px 0;
   }
 
   .getting-started-title {
-    font-size: 36px;
-    letter-spacing: -1.5px;
+    font-size: var(--font-size-2xl);
   }
 
   .getting-started-header {
@@ -302,11 +296,6 @@
   .tracks-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .tracks-grid .track-card:last-child {
-    grid-column: span 1;
-    max-width: 100%;
   }
 
   .track-card {
@@ -325,17 +314,16 @@
 
 @media (max-width: 480px) {
   .getting-started-title {
-    font-size: 28px;
-    letter-spacing: -1px;
+    font-size: var(--font-size-xl);
   }
 
   .track-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
   }
 
   .ecosystem-title {
-    font-size: 22px;
+    font-size: var(--font-size-xl);
   }
 }

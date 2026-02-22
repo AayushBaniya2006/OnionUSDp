@@ -1,14 +1,23 @@
-/* Navbar - Xtract Style */
+/*
+ * Navbar - Clean, Professional Design
+ *
+ * Design Philosophy:
+ * - No glassmorphism
+ * - Solid background with subtle border
+ * - Clean typography without gradients
+ * - Minimal use of accent color
+ * - Organic hover states
+ */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-primary);
-  height: 72px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 68px;
   display: flex;
   align-items: center;
 }
@@ -24,38 +33,33 @@
 }
 
 .navbar-brand {
-  font-size: 20px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #df7afe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
   text-decoration: none;
-  letter-spacing: -0.5px;
-  transition: all 0.3s ease;
+  letter-spacing: var(--letter-spacing-tight);
+  transition: all var(--transition-base);
 }
 
 .navbar-brand:hover {
-  background: linear-gradient(135deg, #df7afe 0%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-primary);
 }
 
+/* === NAV LINKS === */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 32px;
 }
 
 .nav-link {
   color: var(--text-tertiary);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  transition: var(--transition-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-base);
   position: relative;
-  padding: 8px 0;
+  padding: 4px 0;
 }
 
 .nav-link::after {
@@ -64,19 +68,20 @@
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: width 0.3s ease;
+  height: 1px;
+  background: var(--accent-primary);
+  transition: width var(--transition-base);
 }
 
 .nav-link:hover {
-  color: white;
+  color: var(--text-primary);
 }
 
 .nav-link:hover::after {
   width: 100%;
 }
 
+/* === NAVBAR ACTIONS === */
 .navbar-actions {
   display: flex;
   align-items: center;
@@ -84,51 +89,55 @@
 }
 
 .navbar-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
-  transition: var(--transition-spring);
+  transition: all var(--transition-base);
   border: none;
   cursor: pointer;
 }
 
 .navbar-actions .btn-secondary {
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-primary);
+  background: var(--btn-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
 }
 
 .navbar-actions .btn-secondary:hover {
-  background: var(--bg-card-hover);
-  color: white;
-  border-color: var(--border-secondary);
+  background: var(--btn-secondary-hover);
+  border-color: var(--border-medium);
 }
 
 .navbar-actions .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--btn-primary);
   color: white;
-  box-shadow: 0 4px 15px rgba(129, 74, 200, 0.3);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar-actions .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(129, 74, 200, 0.4);
+  background: var(--btn-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .navbar-actions .btn-outline {
   background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-secondary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border-subtle);
 }
 
 .navbar-actions .btn-outline:hover {
-  background: var(--error-light);
-  color: var(--error-red);
-  border-color: rgba(239, 68, 68, 0.4);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
 }
 
+/* === USER INFO === */
 .user-info {
   display: flex;
   align-items: center;
@@ -136,12 +145,12 @@
 }
 
 .user-name {
-  color: var(--text-tertiary);
-  font-size: 14px;
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
 }
 
-/* Mobile Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -149,7 +158,7 @@
 
   .navbar-actions .btn {
     padding: 8px 16px;
-    font-size: 13px;
+    font-size: var(--font-size-xs);
   }
 
   .user-name {
@@ -162,16 +171,7 @@
 }
 
 @media (max-width: 480px) {
-  .brand-text {
-    font-size: 18px;
-  }
-
-  .logo-icon {
-    font-size: 22px;
-  }
-
-  .navbar-actions .btn {
-    padding: 8px 12px;
-    font-size: 12px;
+  .navbar-brand {
+    font-size: var(--font-size-base);
   }
 }

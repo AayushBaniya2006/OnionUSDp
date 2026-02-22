@@ -1,13 +1,22 @@
-/* Hero Section - Organic, Human Design */
+/*
+ * Hero Section - Authentic, Asymmetrical Design
+ *
+ * Design Philosophy:
+ * - Asymmetrical layout (not perfect 1.2fr/0.8fr)
+ * - Organic spacing variations
+ * - Clean typography without gradient text
+ * - Minimal use of accent color
+ * - Sharp corners, intentional radii
+ */
 
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+  background: var(--bg-primary);
+  padding: 120px 0;
   overflow: hidden;
-  padding: 80px 0;
 }
 
 .hero-container {
@@ -15,10 +24,10 @@
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 60px;
+  grid-template-columns: minmax(400px, 2fr) 1fr;
+  gap: clamp(40px, 8vw, 100px);
+  align-items: center;
   position: relative;
-  z-index: 1;
 }
 
 .hero-left {
@@ -30,43 +39,43 @@
 .hero-right {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
+  margin-top: -40px; /* Intentional offset */
 }
 
-/* Tag - Asymmetrical design */
+/* === TAG === */
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  background: rgba(129, 74, 200, 0.15);
-  border: 1px solid rgba(129, 74, 200, 0.3);
-  border-radius: 100px;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-pill);
   margin-bottom: 32px;
   width: fit-content;
 }
 
 .tag-icon {
-  font-size: 18px;
-  color: #814ac8;
+  color: var(--accent-primary);
 }
 
 .tag-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: #a78bfa;
-  letter-spacing: 0.5px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-primary);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-/* Title - Natural spacing */
+/* === TYPOGRAPHY === */
 .hero-title {
-  font-size: clamp(42px, 5vw, 64px);
-  font-weight: 800;
-  line-height: 1.1;
-  color: #ffffff;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
   margin: 0 0 24px 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .title-line-1 {
@@ -75,25 +84,21 @@
 
 .title-line-2 {
   display: block;
-  background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
-/* Description - Conversational tone */
 .hero-description {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #94a3b8;
-  max-width: 540px;
-  margin: 0 0 36px 0;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 0 32px 0;
 }
 
-/* Hero Actions - More natural layout */
+/* === ACTIONS === */
 .hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 40px;
   flex-wrap: wrap;
 }
@@ -102,53 +107,52 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-base);
   border: none;
   cursor: pointer;
 }
 
 .hero-btn-primary {
-  background: linear-gradient(135deg, #814ac8 0%, #9f7aea 100%);
+  background: var(--btn-primary);
   color: white;
-  box-shadow: 0 4px 20px rgba(129, 74, 200, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 .hero-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(129, 74, 200, 0.4);
+  background: var(--btn-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-btn-secondary {
-  background: transparent;
-  color: #a0aec0;
-  border: 1px solid rgba(160, 174, 192, 0.4);
+  background: var(--btn-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
 }
 
 .hero-btn-secondary:hover {
-  background: rgba(129, 74, 200, 0.1);
-  border-color: rgba(129, 74, 200, 0.5);
-  color: #ffffff;
+  background: var(--btn-secondary-hover);
+  border-color: var(--border-medium);
 }
 
 .btn-text {
-  font-size: 15px;
+  font-size: var(--font-size-base);
 }
 
 .btn-icon {
-  font-size: 20px;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
 }
 
 .hero-btn:hover .btn-icon {
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
-/* Trust indicators - Simple, clean */
+/* === TRUST INDICATORS === */
 .hero-trust {
   display: flex;
   gap: 24px;
@@ -159,24 +163,30 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: #718096;
-  font-weight: 500;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-normal);
 }
 
 .trust-icon {
-  font-size: 20px;
-  color: #814ac8;
+  color: var(--accent-primary);
 }
 
-/* Card - More organic styling */
+/* === CARD === */
 .hero-card {
-  background: linear-gradient(145deg, #1a1a2e 0%, #2d2d44 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
   padding: 32px;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.hero-card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .card-header {
@@ -184,27 +194,26 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .card-icon {
-  font-size: 28px;
-  color: #814ac8;
+  color: var(--accent-primary);
 }
 
 .card-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: 0.3px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
 .card-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .card-stat {
@@ -212,31 +221,26 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.card-stat:last-child {
-  border-bottom: none;
 }
 
 .stat-label {
-  font-size: 13px;
-  color: #718096;
-  font-weight: 500;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
 }
 
 .stat-value {
-  font-size: 14px;
-  color: #ffffff;
-  font-family: 'SF Mono', 'Fira Code', 'Monaco', monospace;
-  font-weight: 500;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-medium);
 }
 
 .stat-value.encrypted {
-  color: #814ac8;
-  letter-spacing: 4px;
+  color: var(--accent-primary);
+  letter-spacing: 2px;
 }
 
 .stat-value.confirmed {
@@ -246,31 +250,29 @@
 }
 
 .status-icon {
-  font-size: 16px;
-  color: #48bb78;
+  color: var(--accent-primary);
 }
 
 .card-footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding-top: 20px;
-  font-size: 12px;
-  color: #718096;
-  font-weight: 600;
+  padding-top: 16px;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
 }
 
-/* Stats Box - Minimalist */
+/* === STATS BOX === */
 .hero-stats {
   display: flex;
-  gap: 16px;
-  background: rgba(129, 74, 200, 0.08);
+  gap: 0;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
   padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba(129, 74, 200, 0.15);
 }
 
 .stat-box {
@@ -280,46 +282,35 @@
 
 .stat-divider {
   width: 1px;
-  background: rgba(129, 74, 200, 0.2);
+  background: var(--border-subtle);
 }
 
 .stat-number {
-  font-size: 28px;
-  font-weight: 800;
-  color: #ffffff;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
   line-height: 1;
   margin-bottom: 4px;
 }
 
 .stat-box .stat-label {
-  font-size: 12px;
-  color: #a0aec0;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
-/* Gradient Overlay - Subtle */
-.hero-gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(129, 74, 200, 0.08) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Responsive Design */
+/* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr;
     gap: 48px;
+    text-align: center;
   }
 
-  .hero-title {
-    font-size: 48px;
+  .hero-right {
+    margin-top: 0;
   }
 
   .hero-stats {
@@ -335,16 +326,16 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 60px 0;
+    padding: 80px 0;
     min-height: auto;
   }
 
   .hero-title {
-    font-size: 38px;
+    font-size: var(--font-size-2xl);
   }
 
   .hero-description {
-    font-size: 16px;
+    font-size: var(--font-size-base);
   }
 
   .hero-actions {
@@ -359,40 +350,26 @@
 
   .hero-trust {
     gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero-card {
     padding: 24px;
   }
-
-  .card-header,
-  .card-footer {
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 32px;
-  }
-
-  .hero-description {
-    font-size: 15px;
+    font-size: var(--font-size-xl);
   }
 
   .stat-number {
-    font-size: 24px;
+    font-size: var(--font-size-2xl);
   }
 
   .hero-card {
-    border-radius: 16px;
+    border-radius: var(--radius-sm);
     padding: 20px;
-  }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .hero-card {
-    background: linear-gradient(145deg, #0a0a0f 0%, #1a1a2e 100%);
   }
 }
