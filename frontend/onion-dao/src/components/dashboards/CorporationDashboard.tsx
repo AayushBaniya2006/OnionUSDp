@@ -4,6 +4,7 @@ import { employeeService, transactionService } from '../../services/firestoreSer
 import type { Employee, Transaction } from '../../types';
 import SolanaPayDashboard from '../SolanaPayDashboard';
 import { getNetworkInfo } from '../../services/solanaPayService';
+import { DashboardIcon, GroupsIcon, AccountBalanceIcon, ReceiptIcon, QRCodeIcon, WalletIcon, CheckCircleIcon, ErrorIcon, AddIcon, LogoutIcon, CloseIcon, DownloadIcon, ArrowRightIcon, LockIcon, InfoIcon, ShieldIcon } from '../icons/CustomIcons';
 import './Dashboard.css';
 
 // Solana wallet type declarations
@@ -107,12 +108,10 @@ const CorporationDashboard: React.FC = () => {
   };
 
   const addEmployee = async () => {
-    console.log('🚀 Starting employee creation...');
-    console.log('📋 Form data:', employeeFormData);
-    console.log('👤 User profile:', userProfile);
+    console.log('Starting employee creation...');
 
     if (!employeeFormData.name || !employeeFormData.email || !employeeFormData.department || !employeeFormData.salary) {
-      console.error('❌ Missing required fields');
+      console.error('Missing required fields');
       setSubmitError('Please fill in all required fields');
       return;
     }
@@ -122,27 +121,27 @@ const CorporationDashboard: React.FC = () => {
       const walletAddress = employeeFormData.walletAddress.trim();
       // Basic Solana address validation: should be 32-44 characters, base58 encoded
       if (walletAddress.length < 32 || walletAddress.length > 44) {
-        console.error('❌ Invalid wallet address length');
+        console.error('Invalid wallet address length');
         setSubmitError('Wallet address must be between 32-44 characters. Leave blank if unknown.');
         return;
       }
       // Check for invalid characters (basic validation)
       if (!/^[1-9A-HJ-NP-Za-km-z]+$/.test(walletAddress)) {
-        console.error('❌ Invalid wallet address format');
+        console.error('Invalid wallet address format');
         setSubmitError('Invalid wallet address format. Use a valid Solana address or leave blank.');
         return;
       }
     }
 
     if (!userProfile?.uid) {
-      console.error('❌ No user profile or UID found');
+      console.error('No user profile or UID found');
       console.log('Current userProfile:', userProfile);
       setSubmitError('User profile not found. Please log out and log back in.');
       return;
     }
 
     if (userProfile.userType !== 'corporation') {
-      console.error('❌ User is not a corporation');
+      console.error('User is not a corporation');
       setSubmitError('Only corporations can add employees. Please ensure you are logged in as a corporation.');
       return;
     }
@@ -161,15 +160,10 @@ const CorporationDashboard: React.FC = () => {
         status: 'active' as const
       };
 
-      console.log('📤 Sending employee data to Firebase:', employeeData);
       const employeeId = await employeeService.createEmployee(employeeData);
-      console.log('✅ Employee created with ID:', employeeId);
-      
-      // Reload employees from Firebase
-      console.log('🔄 Reloading employees...');
+
       const updatedEmployees = await employeeService.getEmployeesByCorporation(userProfile.uid);
       setEmployees(updatedEmployees);
-      console.log('✅ Employees reloaded:', updatedEmployees.length, 'total');
       
       // Reset form
       setEmployeeFormData({
@@ -181,9 +175,9 @@ const CorporationDashboard: React.FC = () => {
       });
       setIsAddEmployeeModalOpen(false);
       
-      console.log('🎉 Employee added successfully with ID:', employeeId);
+      console.log('Employee added successfully');
     } catch (error) {
-      console.error('💥 Detailed error adding employee:', error);
+      console.error('Error adding employee:', error);
       
       // More specific error messages
       let errorMessage = 'Failed to add employee. ';
@@ -307,25 +301,25 @@ const CorporationDashboard: React.FC = () => {
     <div className="connect-card">
       <div className="card-content">
         <div className="card-title">
-          <span className="material-icons">account_balance_wallet</span>
+          <WalletIcon size={24} />
           Connect Corporate Wallet
         </div>
         <p>
-          Connect your Solana wallet to access treasury management, employee payments, 
-          and confidential transaction capabilities. Your wallet will be used for all 
+          Connect your Solana wallet to access treasury management, employee payments,
+          and confidential transaction capabilities. Your wallet will be used for all
           corporate payroll operations.
         </p>
-        
+
         {walletError && (
           <div className="modal-error">
-            <span className="material-icons">error</span>
+            <ErrorIcon size={20} />
             {walletError}
           </div>
         )}
-        
+
         <div className="connect-actions">
-          <button 
-            className="btn btn-primary btn-large" 
+          <button
+            className="btn btn-primary btn-large"
             onClick={handleConnectWallet}
             disabled={isLoading}
           >
@@ -336,14 +330,14 @@ const CorporationDashboard: React.FC = () => {
               </>
             ) : (
               <>
-                <span className="material-icons">wallet</span>
+                <WalletIcon size={20} />
                 Connect Phantom Wallet
               </>
             )}
           </button>
-          
+
           <button className="btn btn-secondary" onClick={handleSetupGuide}>
-            <span className="material-icons">help</span>
+            <InfoIcon size={20} />
             Setup Guide
           </button>
         </div>
@@ -375,7 +369,7 @@ const CorporationDashboard: React.FC = () => {
             <div className="treasury-card">
               <div className="card-header">
                 <div className="card-title">
-                  <span className="material-icons">account_balance</span>
+                  <AccountBalanceIcon size={24} />
                   Corporate Treasury
                 </div>
                 <div className="card-status status-secured">SECURED</div>
@@ -394,7 +388,7 @@ const CorporationDashboard: React.FC = () => {
                 </div>
                 <div className="transaction-row">
                   <span className="tx-label">Security Level:</span>
-                  <span className="tx-value private">🔒 Confidential Transfers Enabled</span>
+                  <span className="tx-value private">Confidential Transfers Enabled</span>
                 </div>
                 <div className="transaction-row">
                   <span className="tx-label">Last Connected:</span>
@@ -409,7 +403,7 @@ const CorporationDashboard: React.FC = () => {
             <div className="metrics-card">
               <div className="card-header">
                 <div className="card-title">
-                  <span className="material-icons">analytics</span>
+                  <DashboardIcon size={24} />
                   Payroll Analytics
                 </div>
                 <div className="card-status status-operational">OPERATIONAL</div>
@@ -441,7 +435,7 @@ const CorporationDashboard: React.FC = () => {
             {/* Enhanced Quick Actions */}
             <div className="actions-grid">
               <div className="action-card" onClick={() => setActiveTab('employees')}>
-                <div className="action-icon">people</div>
+                <div className="action-icon"><GroupsIcon size={24} /></div>
                 <div className="action-content">
                   <h4>Employee Registry</h4>
                   <p>Manage employee accounts for confidential payroll processing</p>
@@ -449,7 +443,7 @@ const CorporationDashboard: React.FC = () => {
               </div>
               
               <div className="action-card" onClick={() => setActiveTab('treasury')}>
-                <div className="action-icon">account_balance</div>
+                <div className="action-icon"><AccountBalanceIcon size={24} /></div>
                 <div className="action-content">
                   <h4>Treasury Management</h4>
                   <p>Manage corporate funds and payroll treasury operations</p>
@@ -457,7 +451,7 @@ const CorporationDashboard: React.FC = () => {
               </div>
               
               <div className="action-card" onClick={() => setActiveTab('solana-pay')}>
-                <div className="action-icon">qr_code</div>
+                <div className="action-icon"><QRCodeIcon size={24} /></div>
                 <div className="action-content">
                   <h4>Instant Payments</h4>
                   <p>Generate QR codes for immediate employee payments</p>
@@ -465,7 +459,7 @@ const CorporationDashboard: React.FC = () => {
               </div>
               
               <div className="action-card" onClick={() => setActiveTab('transactions')}>
-                <div className="action-icon">receipt_long</div>
+                <div className="action-icon"><ReceiptIcon size={24} /></div>
                 <div className="action-content">
                   <h4>Payment History</h4>
                   <p>View comprehensive payroll transaction records</p>
@@ -473,7 +467,7 @@ const CorporationDashboard: React.FC = () => {
               </div>
               
               <div className="action-card" onClick={handleComplianceClick}>
-                <div className="action-icon">assessment</div>
+                <div className="action-icon"><CheckCircleIcon size={24} /></div>
                 <div className="action-content">
                   <h4>Compliance Reports</h4>
                   <p>Generate payroll reports for audit and compliance</p>
@@ -481,7 +475,7 @@ const CorporationDashboard: React.FC = () => {
               </div>
 
               <div className="action-card" onClick={handlePrivacyClick}>
-                <div className="action-icon">security</div>
+                <div className="action-icon"><ShieldIcon size={24} /></div>
                 <div className="action-content">
                   <h4>Privacy Settings</h4>
                   <p>Configure confidential transaction parameters</p>
@@ -509,7 +503,7 @@ const CorporationDashboard: React.FC = () => {
                   className="btn btn-primary" 
                   onClick={() => setIsAddEmployeeModalOpen(true)}
                 >
-                  <span className="material-icons">add</span>
+                  <AddIcon size={20} />
                   Add Employee
                 </button>
               </div>
@@ -518,7 +512,7 @@ const CorporationDashboard: React.FC = () => {
             {employees.length === 0 ? (
               <div className="empty-employees">
                 <div className="empty-icon">
-                  <span className="material-icons">people</span>
+                  <GroupsIcon size={48} />
                 </div>
                 <h3>No Employees Registered</h3>
                 <p>
@@ -529,7 +523,7 @@ const CorporationDashboard: React.FC = () => {
                   className="btn btn-primary btn-large"
                   onClick={() => setIsAddEmployeeModalOpen(true)}
                 >
-                  <span className="material-icons">add</span>
+                  <AddIcon size={20} />
                   Add First Employee
                 </button>
               </div>
@@ -586,7 +580,7 @@ const CorporationDashboard: React.FC = () => {
               <div className="header-actions">
                 <span className="badge badge-success">Connected</span>
                 <button className="btn btn-secondary btn-small" onClick={handleDisconnectWallet}>
-                  <span className="material-icons">logout</span>
+                  <LogoutIcon size={20} />
                   Disconnect
                 </button>
               </div>
@@ -632,19 +626,19 @@ const CorporationDashboard: React.FC = () => {
               
               <div className="treasury-actions">
                 <button className="btn btn-primary btn-large" onClick={handleDepositClick}>
-                  <span className="material-icons">add_circle</span>
+                  <AddIcon size={20} />
                   Deposit Funds
                 </button>
                 <button className="btn btn-secondary" onClick={() => setActiveTab('solana-pay')}>
-                  <span className="material-icons">send</span>
+                  <ArrowRightIcon size={20} />
                   Transfer Funds
                 </button>
                 <button className="btn btn-secondary" onClick={() => setActiveTab('transactions')}>
-                  <span className="material-icons">history</span>
+                  <ReceiptIcon size={20} />
                   Transaction History
                 </button>
                 <button className="btn btn-secondary" onClick={handleGenerateReport}>
-                  <span className="material-icons">assessment</span>
+                  <CheckCircleIcon size={20} />
                   Generate Report
                 </button>
               </div>
@@ -677,7 +671,7 @@ const CorporationDashboard: React.FC = () => {
                   <option value="pending">Pending Payments</option>
                 </select>
                 <button className="btn btn-secondary btn-small" onClick={handleExportTransactions}>
-                  <span className="material-icons">download</span>
+                  <DownloadIcon size={20} />
                   Export
                 </button>
               </div>
@@ -686,7 +680,7 @@ const CorporationDashboard: React.FC = () => {
             {getFilteredTransactions().length === 0 ? (
               <div className="empty-transactions">
                 <div className="empty-icon">
-                  <span className="material-icons">receipt_long</span>
+                  <ReceiptIcon size={48} />
                 </div>
                 <h3>{transactions.length === 0 ? 'No Payment History' : 'No Matching Payments'}</h3>
                 <p>
@@ -699,7 +693,7 @@ const CorporationDashboard: React.FC = () => {
                     className="btn btn-primary"
                     onClick={() => setActiveTab('solana-pay')}
                   >
-                    <span className="material-icons">qr_code</span>
+                    <QRCodeIcon size={20} />
                     Make First Payment
                   </button>
                 )}
@@ -797,7 +791,7 @@ const CorporationDashboard: React.FC = () => {
               onClick={handleLogout}
               title="Sign Out"
             >
-              <span className="material-icons">logout</span>
+              <LogoutIcon size={20} />
               Sign Out
             </button>
           </div>
@@ -805,17 +799,29 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Enhanced Navigation */}
         <nav className="professional-tabs">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab.id as TabType)}
-              title={tab.description}
-            >
-              <span className="tab-icon material-icons">{tab.icon}</span>
-              <span className="tab-label">{tab.label}</span>
-            </button>
-          ))}
+          {tabs.map((tab) => {
+            const getTabIcon = (iconName: string) => {
+              switch (iconName) {
+                case 'dashboard': return <DashboardIcon size={20} />;
+                case 'people': return <GroupsIcon size={20} />;
+                case 'account_balance': return <AccountBalanceIcon size={20} />;
+                case 'receipt_long': return <ReceiptIcon size={20} />;
+                case 'qr_code': return <QRCodeIcon size={20} />;
+                default: return null;
+              }
+            };
+            return (
+              <button
+                key={tab.id}
+                className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab.id as TabType)}
+                title={tab.description}
+              >
+                <span className="tab-icon">{getTabIcon(tab.icon)}</span>
+                <span className="tab-label">{tab.label}</span>
+              </button>
+            );
+          })}
         </nav>
 
         {/* Main Content */}
@@ -829,19 +835,19 @@ const CorporationDashboard: React.FC = () => {
             <div className="modal" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 className="modal-title">Add New Employee</h2>
-                <button 
+                <button
                   className="modal-close"
                   onClick={() => setIsAddEmployeeModalOpen(false)}
                   disabled={isSubmitting}
                 >
-                  <span className="material-icons">close</span>
+                  <CloseIcon size={20} />
                 </button>
               </div>
               
               <div className="modal-body">
                 {submitError && (
                   <div className="modal-error">
-                    <span className="material-icons">error</span>
+                    <ErrorIcon size={20} />
                     {submitError}
                   </div>
                 )}
@@ -930,7 +936,7 @@ const CorporationDashboard: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <span className="material-icons">add</span>
+                      <AddIcon size={20} />
                       Add Employee
                     </>
                   )}
@@ -947,12 +953,12 @@ const CorporationDashboard: React.FC = () => {
               <div className="modal-header">
                 <h2 className="modal-title">Deposit Funds</h2>
                 <button className="modal-close" onClick={() => setIsDepositModalOpen(false)}>
-                  <span className="material-icons">close</span>
+                  <CloseIcon size={20} />
                 </button>
               </div>
               <div className="modal-body">
                 <div className="info-card">
-                  <span className="material-icons">info</span>
+                  <InfoIcon size={20} />
                   <p>
                     To deposit funds to your corporate treasury, send SOL or USDC to your connected wallet address.
                     Your wallet is ready to receive funds for payroll operations.
@@ -989,7 +995,7 @@ const CorporationDashboard: React.FC = () => {
                     alert('Wallet address copied to clipboard!');
                   }}
                 >
-                  <span className="material-icons">content_copy</span>
+                  <DownloadIcon size={20} />
                   Copy Address
                 </button>
               </div>
@@ -1004,7 +1010,7 @@ const CorporationDashboard: React.FC = () => {
               <div className="modal-header">
                 <h2 className="modal-title">Generate Report</h2>
                 <button className="modal-close" onClick={() => setIsReportModalOpen(false)}>
-                  <span className="material-icons">close</span>
+                  <CloseIcon size={20} />
                 </button>
               </div>
               <div className="modal-body">
@@ -1035,7 +1041,7 @@ const CorporationDashboard: React.FC = () => {
                   Close
                 </button>
                 <button className="btn btn-primary" onClick={handleExportTransactions}>
-                  <span className="material-icons">download</span>
+                  <DownloadIcon size={20} />
                   Export CSV
                 </button>
               </div>
@@ -1050,12 +1056,12 @@ const CorporationDashboard: React.FC = () => {
               <div className="modal-header">
                 <h2 className="modal-title">Compliance Reports</h2>
                 <button className="modal-close" onClick={() => setIsComplianceModalOpen(false)}>
-                  <span className="material-icons">close</span>
+                  <CloseIcon size={20} />
                 </button>
               </div>
               <div className="modal-body">
                 <div className="info-card">
-                  <span className="material-icons">verified</span>
+                  <CheckCircleIcon size={20} />
                   <p>All payroll transactions are recorded on the Solana blockchain for complete transparency and auditability.</p>
                 </div>
                 <h4 style={{marginTop: '16px'}}>Compliance Status</h4>
@@ -1092,12 +1098,12 @@ const CorporationDashboard: React.FC = () => {
               <div className="modal-header">
                 <h2 className="modal-title">Privacy Settings</h2>
                 <button className="modal-close" onClick={() => setIsPrivacyModalOpen(false)}>
-                  <span className="material-icons">close</span>
+                  <CloseIcon size={20} />
                 </button>
               </div>
               <div className="modal-body">
                 <div className="info-card">
-                  <span className="material-icons">security</span>
+                  <ShieldIcon size={20} />
                   <p>OnionUSD-P uses Solana's Token-2022 confidential transfer extension to hide payment amounts on-chain.</p>
                 </div>
                 <h4 style={{marginTop: '16px'}}>Privacy Features</h4>
