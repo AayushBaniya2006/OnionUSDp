@@ -823,12 +823,13 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Enhanced Add Employee Modal */}
         {isAddEmployeeModalOpen && (
-          <div className="modal-overlay" onClick={() => setIsAddEmployeeModalOpen(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsAddEmployeeModalOpen(false)}>
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="add-employee-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">Add New Employee</h2>
+                <h2 id="add-employee-title" className="modal-title">Add New Employee</h2>
                 <button
                   className="modal-close"
+                  aria-label="Close modal"
                   onClick={() => setIsAddEmployeeModalOpen(false)}
                   disabled={isSubmitting}
                 >
@@ -940,11 +941,11 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Deposit Modal */}
         {isDepositModalOpen && (
-          <div className="modal-overlay" onClick={() => setIsDepositModalOpen(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsDepositModalOpen(false)}>
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="deposit-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">Deposit Funds</h2>
-                <button className="modal-close" onClick={() => setIsDepositModalOpen(false)}>
+                <h2 id="deposit-title" className="modal-title">Deposit Funds</h2>
+                <button className="modal-close" aria-label="Close modal" onClick={() => setIsDepositModalOpen(false)}>
                   <CloseIcon size={20} />
                 </button>
               </div>
@@ -997,11 +998,11 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Generate Report Modal */}
         {isReportModalOpen && (
-          <div className="modal-overlay" onClick={() => setIsReportModalOpen(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsReportModalOpen(false)}>
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="report-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">Generate Report</h2>
-                <button className="modal-close" onClick={() => setIsReportModalOpen(false)}>
+                <h2 id="report-title" className="modal-title">Generate Report</h2>
+                <button className="modal-close" aria-label="Close modal" onClick={() => setIsReportModalOpen(false)}>
                   <CloseIcon size={20} />
                 </button>
               </div>
@@ -1043,11 +1044,11 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Compliance Modal */}
         {isComplianceModalOpen && (
-          <div className="modal-overlay" onClick={() => setIsComplianceModalOpen(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsComplianceModalOpen(false)}>
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="compliance-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">Compliance Reports</h2>
-                <button className="modal-close" onClick={() => setIsComplianceModalOpen(false)}>
+                <h2 id="compliance-title" className="modal-title">Compliance Reports</h2>
+                <button className="modal-close" aria-label="Close modal" onClick={() => setIsComplianceModalOpen(false)}>
                   <CloseIcon size={20} />
                 </button>
               </div>
@@ -1085,11 +1086,11 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Privacy Settings Modal */}
         {isPrivacyModalOpen && (
-          <div className="modal-overlay" onClick={() => setIsPrivacyModalOpen(false)}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsPrivacyModalOpen(false)}>
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
-                <h2 className="modal-title">Privacy Settings</h2>
-                <button className="modal-close" onClick={() => setIsPrivacyModalOpen(false)}>
+                <h2 id="privacy-title" className="modal-title">Privacy Settings</h2>
+                <button className="modal-close" aria-label="Close modal" onClick={() => setIsPrivacyModalOpen(false)}>
                   <CloseIcon size={20} />
                 </button>
               </div>
