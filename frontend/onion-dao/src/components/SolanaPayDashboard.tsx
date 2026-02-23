@@ -4,6 +4,7 @@ import { solanaPayService, type PaymentRequest, type BulkPayrollRequest, getNetw
 import { transactionService } from '../services/firestoreService';
 import type { Employee } from '../types';
 import SolanaPayQR from './SolanaPayQR';
+import { PaymentsIcon, InfoIcon, PersonIcon, GroupsIcon, BusinessIcon, ReceiptIcon, QRCodeIcon, ErrorIcon, CheckCircleIcon, PlayIcon } from './icons/CustomIcons';
 import './SolanaPayDashboard.css';
 
 interface SolanaPayDashboardProps {
@@ -351,13 +352,22 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
     { value: 'OnionUSD-P', label: 'OnionUSD-P', balance: balances['OnionUSD-P'] }
   ];
 
+  const getPaymentTypeIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'person': return <PersonIcon size={24} />;
+      case 'groups': return <GroupsIcon size={24} />;
+      case 'business': return <BusinessIcon size={24} />;
+      default: return <ReceiptIcon size={24} />;
+    }
+  };
+
   return (
     <div className="solana-pay-dashboard">
       {/* Header */}
       <div className="dashboard-header">
         <div className="header-row">
           <h2 className="dashboard-title">
-            <span className="material-icons">payment</span>
+            <PaymentsIcon size={24} />
             Solana Pay Integration
           </h2>
           <div className="header-badges">
@@ -365,7 +375,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
               {networkInfo.isDevnet ? 'Devnet' : 'Mainnet'}
             </span>
             <span className="demo-badge">
-              <span className="material-icons">science</span>
+              <InfoIcon size={16} />
               Demo Mode
             </span>
           </div>
@@ -405,7 +415,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                 className={`payment-type-card ${activePaymentType === type.id ? 'active' : ''}`}
                 onClick={() => setActivePaymentType(type.id as PaymentType)}
               >
-                <span className="material-icons type-icon">{type.icon}</span>
+                <span className="type-icon">{getPaymentTypeIcon(type.icon)}</span>
                 <div className="type-content">
                   <h4>{type.label}</h4>
                   <p>{type.description}</p>
@@ -479,7 +489,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                 onClick={generateEmployeePayment}
                 disabled={isGenerating || !employeeForm.employeeId || !employeeForm.amount}
               >
-                <span className="material-icons">qr_code</span>
+                <QRCodeIcon size={20} />
                 {isGenerating ? 'Generating...' : 'Generate Payment QR'}
               </button>
             </div>
@@ -541,7 +551,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                 onClick={generateBulkPayroll}
                 disabled={isGenerating || bulkPayrollForm.selectedEmployees.size === 0}
               >
-                <span className="material-icons">qr_code_2</span>
+                <QRCodeIcon size={20} />
                 {isGenerating ? 'Generating...' : `Generate Payroll QRs (${bulkPayrollForm.selectedEmployees.size} employees)`}
               </button>
             </div>
@@ -604,7 +614,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                 onClick={generateVendorPayment}
                 disabled={isGenerating || !vendorForm.walletAddress || !vendorForm.amount}
               >
-                <span className="material-icons">qr_code</span>
+                <QRCodeIcon size={20} />
                 {isGenerating ? 'Generating...' : 'Generate Vendor Payment QR'}
               </button>
             </div>
@@ -667,7 +677,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                 onClick={generateInvoice}
                 disabled={isGenerating || !invoiceForm.amount || !invoiceForm.description}
               >
-                <span className="material-icons">receipt</span>
+                <ReceiptIcon size={20} />
                 {isGenerating ? 'Generating...' : 'Generate Invoice QR'}
               </button>
             </div>
@@ -676,7 +686,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
           {/* Error Display */}
           {error && (
             <div className="error-message">
-              <span className="material-icons">error</span>
+              <ErrorIcon size={20} />
               {error}
             </div>
           )}
@@ -685,7 +695,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
         {/* Success Message */}
         {successMessage && (
           <div className="success-message">
-            <span className="material-icons">check_circle</span>
+            <CheckCircleIcon size={20} />
             {successMessage}
           </div>
         )}
@@ -703,7 +713,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                 {/* Simulation Controls */}
                 <div className="simulation-controls">
                   <div className="simulation-header">
-                    <span className="material-icons">science</span>
+                    <InfoIcon size={16} />
                     <span>Demo Mode - Simulate Payment</span>
                   </div>
 
@@ -716,7 +726,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                       }}
                       disabled={isSimulating}
                     >
-                      <span className="material-icons">play_arrow</span>
+                      <PlayIcon size={20} />
                       Simulate Payment Execution
                     </button>
                   )}
@@ -737,20 +747,20 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
 
                   {simulationStatus === 'success' && (
                     <div className="simulation-success">
-                      <span className="material-icons">check_circle</span>
+                      <CheckCircleIcon size={20} />
                       <span>Payment completed successfully!</span>
                     </div>
                   )}
 
                   {simulationStatus === 'error' && (
                     <div className="simulation-error">
-                      <span className="material-icons">error</span>
+                      <ErrorIcon size={20} />
                       <span>Payment failed. Please try again.</span>
                     </div>
                   )}
 
                   <p className="simulation-note">
-                    <span className="material-icons">info</span>
+                    <InfoIcon size={14} />
                     This simulates a payment without transferring real funds.
                     Transaction will be recorded to your history with a DEMO signature.
                   </p>
@@ -789,7 +799,7 @@ const SolanaPayDashboard: React.FC<SolanaPayDashboardProps> = ({
                   }}
                   disabled={isSimulating}
                 >
-                  <span className="material-icons">play_arrow</span>
+                  <PlayIcon size={20} />
                   Simulate All Payments
                 </button>
               </div>
