@@ -5,6 +5,7 @@ import type { Employee, Transaction } from '../../types';
 import SolanaPayDashboard from '../SolanaPayDashboard';
 import { getNetworkInfo } from '../../services/solanaPayService';
 import { DashboardIcon, GroupsIcon, AccountBalanceIcon, ReceiptIcon, QRCodeIcon, WalletIcon, CheckCircleIcon, ErrorIcon, AddIcon, LogoutIcon, CloseIcon, DownloadIcon, ArrowRightIcon, InfoIcon, ShieldIcon } from '../icons/CustomIcons';
+import { useSuccessToast } from '../shared';
 import './Dashboard.css';
 
 // Solana wallet type declarations
@@ -47,6 +48,7 @@ const CorporationDashboard: React.FC = () => {
 
   // Get network info for display
   const networkInfo = getNetworkInfo();
+  const showSuccess = useSuccessToast();
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: 'dashboard', description: 'Company metrics & quick actions' },
@@ -240,7 +242,7 @@ const CorporationDashboard: React.FC = () => {
   const handleExportTransactions = useCallback(() => {
     const filteredTxs = getFilteredTransactions();
     if (filteredTxs.length === 0) {
-      alert('No transactions to export');
+      showSuccess('No transactions to export', 'Try adjusting your filter criteria');
       return;
     }
 
@@ -982,7 +984,7 @@ const CorporationDashboard: React.FC = () => {
                   className="btn btn-primary"
                   onClick={() => {
                     navigator.clipboard.writeText(walletInfo?.publicKey || '');
-                    alert('Wallet address copied to clipboard!');
+                    showSuccess('Copied!', 'Wallet address copied to clipboard');
                   }}
                 >
                   <DownloadIcon size={20} />
