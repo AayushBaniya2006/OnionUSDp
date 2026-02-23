@@ -102,7 +102,6 @@
 }
 
 .info-label {
-  font-size: var(--font-sm);
   color: var(--text-tertiary);
   font-weight: 500;
   text-transform: uppercase;
@@ -174,7 +173,7 @@
 }
 
 .payment-actions .btn-primary:hover:not(:disabled) {
-  background: #1d4ed8;
+  background: var(--accent-hover);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
