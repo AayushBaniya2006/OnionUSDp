@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircleIcon, ArrowRightIcon } from './icons/CustomIcons';
+import { ArrowRightIcon } from './icons/CustomIcons';
 import './FAQ.css';
 
 interface FAQItem {
