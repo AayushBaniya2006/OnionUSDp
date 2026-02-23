@@ -5,8 +5,6 @@ import './SolanaPayQR.css';
 
 interface SolanaPayQRProps {
   paymentRequest: PaymentRequest;
-  onPaymentCompleted?: (signature: string) => void;
-  onPaymentFailed?: (error: string) => void;
   size?: number;
   showDetails?: boolean;
   className?: string;
