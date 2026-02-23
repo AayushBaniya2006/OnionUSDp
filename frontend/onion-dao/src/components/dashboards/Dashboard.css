@@ -237,14 +237,6 @@
   gap: 12px;
 }
 
-.card-title .material-icons {
-  font-size: 22px;
-  color: var(--accent-primary);
-  background: var(--primary-light);
-  padding: 8px;
-  border-radius: 10px;
-}
-
 .card-status {
   padding: 6px 14px;
   border-radius: 100px;
@@ -995,11 +987,6 @@
   background: var(--primary-light);
   border: 1px solid var(--primary-border);
   border-radius: 12px;
-}
-
-.two-fa-option .option-icon .material-icons {
-  font-size: 22px;
-  color: var(--accent-primary);
 }
 
 .two-fa-option .option-content h4 {

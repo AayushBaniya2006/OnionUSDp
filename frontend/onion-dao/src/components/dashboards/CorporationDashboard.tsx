@@ -5,7 +5,7 @@ import type { Employee, Transaction } from '../../types';
 import SolanaPayDashboard from '../SolanaPayDashboard';
 import { getNetworkInfo } from '../../services/solanaPayService';
 import { DashboardIcon, GroupsIcon, AccountBalanceIcon, ReceiptIcon, QRCodeIcon, WalletIcon, CheckCircleIcon, ErrorIcon, AddIcon, LogoutIcon, CloseIcon, DownloadIcon, ArrowRightIcon, InfoIcon, ShieldIcon } from '../icons/CustomIcons';
-import { useSuccessToast } from '../shared';
+import { useSuccessToast, useToast } from '../shared';
 import './Dashboard.css';
 
 // Solana wallet type declarations
@@ -49,6 +49,7 @@ const CorporationDashboard: React.FC = () => {
   // Get network info for display
   const networkInfo = getNetworkInfo();
   const showSuccess = useSuccessToast();
+  const { addToast } = useToast();
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: 'dashboard', description: 'Company metrics & quick actions' },
@@ -160,6 +161,7 @@ const CorporationDashboard: React.FC = () => {
       const updatedEmployees = await employeeService.getEmployeesByCorporation(userProfile.uid);
       setEmployees(updatedEmployees);
       
+      const addedName = employeeFormData.name;
       // Reset form
       setEmployeeFormData({
         name: '',
@@ -169,6 +171,7 @@ const CorporationDashboard: React.FC = () => {
         walletAddress: ''
       });
       setIsAddEmployeeModalOpen(false);
+      showSuccess('Employee added', `${addedName} has been registered for payroll`);
       
     } catch (error) {
       console.error('Error adding employee:', error);
@@ -242,7 +245,7 @@ const CorporationDashboard: React.FC = () => {
   const handleExportTransactions = useCallback(() => {
     const filteredTxs = getFilteredTransactions();
     if (filteredTxs.length === 0) {
-      showSuccess('No transactions to export', 'Try adjusting your filter criteria');
+      addToast({ type: 'info', title: 'No transactions to export', message: 'Try adjusting your filter criteria' });
       return;
     }
 
@@ -823,7 +826,7 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Enhanced Add Employee Modal */}
         {isAddEmployeeModalOpen && (
-          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsAddEmployeeModalOpen(false)}>
+          <div className="modal-overlay" onClick={() => setIsAddEmployeeModalOpen(false)}>
             <div className="modal" role="dialog" aria-modal="true" aria-labelledby="add-employee-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 id="add-employee-title" className="modal-title">Add New Employee</h2>
@@ -941,7 +944,7 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Deposit Modal */}
         {isDepositModalOpen && (
-          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsDepositModalOpen(false)}>
+          <div className="modal-overlay" onClick={() => setIsDepositModalOpen(false)}>
             <div className="modal" role="dialog" aria-modal="true" aria-labelledby="deposit-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 id="deposit-title" className="modal-title">Deposit Funds</h2>
@@ -998,7 +1001,7 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Generate Report Modal */}
         {isReportModalOpen && (
-          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsReportModalOpen(false)}>
+          <div className="modal-overlay" onClick={() => setIsReportModalOpen(false)}>
             <div className="modal" role="dialog" aria-modal="true" aria-labelledby="report-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 id="report-title" className="modal-title">Generate Report</h2>
@@ -1044,7 +1047,7 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Compliance Modal */}
         {isComplianceModalOpen && (
-          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsComplianceModalOpen(false)}>
+          <div className="modal-overlay" onClick={() => setIsComplianceModalOpen(false)}>
             <div className="modal" role="dialog" aria-modal="true" aria-labelledby="compliance-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 id="compliance-title" className="modal-title">Compliance Reports</h2>
@@ -1086,7 +1089,7 @@ const CorporationDashboard: React.FC = () => {
 
         {/* Privacy Settings Modal */}
         {isPrivacyModalOpen && (
-          <div className="modal-overlay" aria-hidden="true" onClick={() => setIsPrivacyModalOpen(false)}>
+          <div className="modal-overlay" onClick={() => setIsPrivacyModalOpen(false)}>
             <div className="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 id="privacy-title" className="modal-title">Privacy Settings</h2>

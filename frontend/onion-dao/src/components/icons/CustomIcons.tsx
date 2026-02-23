@@ -7,8 +7,8 @@ export interface IconProps {
 
 // Shield icon for privacy features
 export const ShieldIcon: React.FC<IconProps> = ({ className = '', size = 20 }) => (
-  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-4V2a3 3 0 0 1 3 3h14a3 3 0 0 1 3 3v18a3 3 0 0 1-3-3zm-1 7-1 3 0 3 2a3 3 0 0 1-6 0 3v6a3 3 0 0 1 3-3h-6a3 3 0 0 1 3-3v6z"/>
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
   </svg>
 );
 
@@ -236,5 +236,17 @@ export const SettingsIcon: React.FC<IconProps> = ({ className = '', size = 20 })
 export const PlayIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
     <path d="M8 5v14l11-7z"/>
+  </svg>
+);
+
+export const CopyIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+  </svg>
+);
+
+export const CheckIcon: React.FC<IconProps> = ({ size = 24, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
   </svg>
 );

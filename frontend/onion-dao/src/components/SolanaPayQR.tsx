@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import QRCode from 'react-qr-code';
 import type { PaymentRequest } from '../services/solanaPayService';
 import './SolanaPayQR.css';
+import { WalletIcon, CopyIcon, CheckIcon } from './icons/CustomIcons';
 
 interface SolanaPayQRProps {
   paymentRequest: PaymentRequest;
@@ -162,7 +163,7 @@ const SolanaPayQR: React.FC<SolanaPayQRProps> = ({
               onClick={openInWallet}
               disabled={paymentStatus === 'expired' || paymentStatus === 'completed'}
             >
-              <span className="material-icons">account_balance_wallet</span>
+              <WalletIcon size={20} />
               Open in Wallet
             </button>
 
@@ -170,9 +171,7 @@ const SolanaPayQR: React.FC<SolanaPayQRProps> = ({
               className="btn btn-secondary"
               onClick={copyToClipboard}
             >
-              <span className="material-icons">
-                {copied ? 'check' : 'content_copy'}
-              </span>
+              {copied ? <CheckIcon size={20} /> : <CopyIcon size={20} />}
               {copied ? 'Copied!' : 'Copy Link'}
             </button>
           </div>
