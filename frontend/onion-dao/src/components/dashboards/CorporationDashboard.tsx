@@ -4,7 +4,7 @@ import { employeeService, transactionService } from '../../services/firestoreSer
 import type { Employee, Transaction } from '../../types';
 import SolanaPayDashboard from '../SolanaPayDashboard';
 import { getNetworkInfo } from '../../services/solanaPayService';
-import { DashboardIcon, GroupsIcon, AccountBalanceIcon, ReceiptIcon, QRCodeIcon, WalletIcon, CheckCircleIcon, ErrorIcon, AddIcon, LogoutIcon, CloseIcon, DownloadIcon, ArrowRightIcon, LockIcon, InfoIcon, ShieldIcon } from '../icons/CustomIcons';
+import { DashboardIcon, GroupsIcon, AccountBalanceIcon, ReceiptIcon, QRCodeIcon, WalletIcon, CheckCircleIcon, ErrorIcon, AddIcon, LogoutIcon, CloseIcon, DownloadIcon, ArrowRightIcon, InfoIcon, ShieldIcon } from '../icons/CustomIcons';
 import './Dashboard.css';
 
 // Solana wallet type declarations
@@ -160,7 +160,7 @@ const CorporationDashboard: React.FC = () => {
         status: 'active' as const
       };
 
-      const employeeId = await employeeService.createEmployee(employeeData);
+      await employeeService.createEmployee(employeeData);
 
       const updatedEmployees = await employeeService.getEmployeesByCorporation(userProfile.uid);
       setEmployees(updatedEmployees);
@@ -590,7 +590,7 @@ const CorporationDashboard: React.FC = () => {
               <div className="treasury-balance-card">
                 <div className="card-header">
                   <div className="card-title">
-                    <span className="material-icons">account_balance_wallet</span>
+                    <WalletIcon size={20} />
                     Corporate Wallet
                   </div>
                   <div className="card-status status-confidential">CONFIDENTIAL</div>
@@ -973,8 +973,8 @@ const CorporationDashboard: React.FC = () => {
                   <span className="tx-value">Solana {networkInfo.isDevnet ? 'Devnet' : 'Mainnet'}</span>
                 </div>
                 {networkInfo.isDevnet && (
-                  <div className="info-card" style={{marginTop: '16px', background: 'rgba(245, 158, 11, 0.1)'}}>
-                    <span className="material-icons" style={{color: '#f59e0b'}}>science</span>
+                  <div className="info-card devnet-info-card">
+                    <InfoIcon size={20} />
                     <p>
                       You're on Devnet. Get free test SOL from the{' '}
                       <a href="https://faucet.solana.com" target="_blank" rel="noopener noreferrer" style={{color: '#4A90E2'}}>
@@ -1083,7 +1083,7 @@ const CorporationDashboard: React.FC = () => {
                   Close
                 </button>
                 <button className="btn btn-primary" onClick={handleExportTransactions}>
-                  <span className="material-icons">download</span>
+                  <DownloadIcon size={20} />
                   Export Audit Log
                 </button>
               </div>
