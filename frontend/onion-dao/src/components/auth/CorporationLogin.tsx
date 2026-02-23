@@ -27,42 +27,31 @@ const CorporationLogin: React.FC<CorporationLoginProps> = ({ isSignUp, onBack, o
     setLoading(true);
 
     try {
-      console.log('Form submitted:', { isSignUp, email: formData.email });
-      
       if (isSignUp) {
         if (formData.password !== formData.confirmPassword) {
           throw new Error('Passwords do not match');
         }
-        
+
         if (!formData.companyName.trim()) {
           throw new Error('Company name is required');
         }
-        
-        console.log('Attempting corporation sign up...');
-        const profile = await signUp(formData.email, formData.password, 'corporation', {
+
+        await signUp(formData.email, formData.password, 'corporation', {
           companyName: formData.companyName
         });
-        console.log('Corporation sign up successful, profile:', profile);
-        
-        // Redirect to dashboard after successful signup
-        console.log('Navigating to dashboard...');
+
         navigate('/dashboard');
       } else {
-        console.log('Attempting corporation sign in...');
         await signIn(formData.email, formData.password);
-        console.log('Corporation sign in successful');
-        
-        // Add a small delay to allow profile to be created/loaded
+
+        // Small delay to allow profile to load
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Redirect to dashboard after successful signin
-        console.log('Navigating to dashboard...');
+
         navigate('/dashboard');
       }
     } catch (err: any) {
       console.error('Authentication error:', err);
-      
-      // Handle specific Firebase errors
+
       let errorMessage = err.message;
       if (err.code === 'auth/user-not-found') {
         errorMessage = 'No account found with this email address';
@@ -77,7 +66,7 @@ const CorporationLogin: React.FC<CorporationLoginProps> = ({ isSignUp, onBack, o
       } else if (err.code === 'auth/too-many-requests') {
         errorMessage = 'Too many failed attempts. Please try again later';
       }
-      
+
       setError(errorMessage);
     } finally {
       setLoading(false);

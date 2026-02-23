@@ -28,47 +28,36 @@ const EmployeeLogin: React.FC<EmployeeLoginProps> = ({ isSignUp, onBack, onToggl
     setLoading(true);
 
     try {
-      console.log('Form submitted:', { isSignUp, email: formData.email });
-      
       if (isSignUp) {
         if (formData.password !== formData.confirmPassword) {
           throw new Error('Passwords do not match');
         }
-        
+
         if (!formData.employeeName.trim()) {
           throw new Error('Employee name is required');
         }
-        
+
         if (!formData.corporationId.trim()) {
           throw new Error('Corporation ID is required');
         }
-        
-        console.log('Attempting sign up...');
-        const profile = await signUp(formData.email, formData.password, 'employee', {
+
+        await signUp(formData.email, formData.password, 'employee', {
           employeeName: formData.employeeName,
           corporationId: formData.corporationId
         });
-        console.log('Sign up successful, profile:', profile);
-        
-        // Redirect to dashboard after successful signup
-        console.log('Navigating to dashboard...');
+
         navigate('/dashboard');
       } else {
-        console.log('Attempting sign in...');
         await signIn(formData.email, formData.password);
-        console.log('Sign in successful');
-        
-        // Add a small delay to allow profile to be created/loaded
+
+        // Small delay to allow profile to load
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Redirect to dashboard after successful signin
-        console.log('Navigating to dashboard...');
+
         navigate('/dashboard');
       }
     } catch (err: any) {
       console.error('Authentication error:', err);
-      
-      // Handle specific Firebase errors
+
       let errorMessage = err.message;
       if (err.code === 'auth/user-not-found') {
         errorMessage = 'No account found with this email address';
@@ -83,7 +72,7 @@ const EmployeeLogin: React.FC<EmployeeLoginProps> = ({ isSignUp, onBack, onToggl
       } else if (err.code === 'auth/too-many-requests') {
         errorMessage = 'Too many failed attempts. Please try again later';
       }
-      
+
       setError(errorMessage);
     } finally {
       setLoading(false);
