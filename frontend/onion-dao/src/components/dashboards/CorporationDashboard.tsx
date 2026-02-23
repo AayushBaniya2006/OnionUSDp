@@ -377,7 +377,7 @@ const CorporationDashboard: React.FC = () => {
                   <span className="tx-label">Network:</span>
                   <span className="tx-value">
                     Solana {networkInfo.isDevnet ? 'Devnet' : 'Mainnet'}
-                    {networkInfo.isDevnet && <span className="badge badge-warning" style={{marginLeft: '8px', fontSize: '10px'}}>DEMO</span>}
+                    {networkInfo.isDevnet && <span className="badge badge-warning badge-demo">DEMO</span>}
                   </span>
                 </div>
                 <div className="transaction-row">
@@ -604,7 +604,7 @@ const CorporationDashboard: React.FC = () => {
                     <span className="tx-label">Network:</span>
                     <span className="tx-value">
                       Solana {networkInfo.isDevnet ? 'Devnet' : 'Mainnet'}
-                      {networkInfo.isDevnet && <span className="badge badge-warning" style={{marginLeft: '8px', fontSize: '10px'}}>DEMO</span>}
+                      {networkInfo.isDevnet && <span className="badge badge-warning badge-demo">DEMO</span>}
                     </span>
                   </div>
                   <div className="transaction-row">
@@ -956,7 +956,7 @@ const CorporationDashboard: React.FC = () => {
                     Your wallet is ready to receive funds for payroll operations.
                   </p>
                 </div>
-                <div className="transaction-row" style={{marginTop: '16px'}}>
+                <div className="transaction-row deposit-wallet-row">
                   <span className="tx-label">Your Wallet:</span>
                   <span className="tx-address">{walletInfo?.publicKey}</span>
                 </div>
@@ -969,7 +969,7 @@ const CorporationDashboard: React.FC = () => {
                     <InfoIcon size={20} />
                     <p>
                       You're on Devnet. Get free test SOL from the{' '}
-                      <a href="https://faucet.solana.com" target="_blank" rel="noopener noreferrer" style={{color: '#4A90E2'}}>
+                      <a href="https://faucet.solana.com" target="_blank" rel="noopener noreferrer" className="devnet-faucet-link">
                         Solana Faucet
                       </a>
                     </p>
@@ -1056,7 +1056,7 @@ const CorporationDashboard: React.FC = () => {
                   <CheckCircleIcon size={20} />
                   <p>All payroll transactions are recorded on the Solana blockchain for complete transparency and auditability.</p>
                 </div>
-                <h4 style={{marginTop: '16px'}}>Compliance Status</h4>
+                <h4 className="modal-section-header">Compliance Status</h4>
                 <div className="transaction-row">
                   <span className="tx-label">Blockchain Records:</span>
                   <span className="tx-value private">✓ Verified</span>
@@ -1098,7 +1098,7 @@ const CorporationDashboard: React.FC = () => {
                   <ShieldIcon size={20} />
                   <p>OnionUSD-P uses Solana's Token-2022 confidential transfer extension to hide payment amounts on-chain.</p>
                 </div>
-                <h4 style={{marginTop: '16px'}}>Privacy Features</h4>
+                <h4 className="modal-section-header">Privacy Features</h4>
                 <div className="transaction-row">
                   <span className="tx-label">Confidential Transfers:</span>
                   <span className="tx-value private">✓ Enabled</span>

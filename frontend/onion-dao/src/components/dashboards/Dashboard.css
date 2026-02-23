@@ -1271,3 +1271,33 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ===== Inline style replacements ===== */
+
+/* Demo badge label spacing */
+.badge-demo {
+  margin-left: 8px;
+  font-size: 10px;
+}
+
+/* Devnet info card (warning-colored) */
+.devnet-info-card {
+  margin-top: var(--space-4);
+  background: var(--warning-background);
+  border-color: var(--warning-primary);
+}
+
+/* Deposit modal top-spaced row */
+.deposit-wallet-row {
+  margin-top: var(--space-4);
+}
+
+/* Devnet faucet link */
+.devnet-faucet-link {
+  color: var(--accent-primary);
+}
+
+/* Modal section subheading spacing */
+.modal-section-header {
+  margin-top: var(--space-4);
+}
