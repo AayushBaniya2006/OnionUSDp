@@ -108,10 +108,8 @@ const CorporationDashboard: React.FC = () => {
   };
 
   const addEmployee = async () => {
-    console.log('Starting employee creation...');
 
     if (!employeeFormData.name || !employeeFormData.email || !employeeFormData.department || !employeeFormData.salary) {
-      console.error('Missing required fields');
       setSubmitError('Please fill in all required fields');
       return;
     }
@@ -121,27 +119,22 @@ const CorporationDashboard: React.FC = () => {
       const walletAddress = employeeFormData.walletAddress.trim();
       // Basic Solana address validation: should be 32-44 characters, base58 encoded
       if (walletAddress.length < 32 || walletAddress.length > 44) {
-        console.error('Invalid wallet address length');
         setSubmitError('Wallet address must be between 32-44 characters. Leave blank if unknown.');
         return;
       }
       // Check for invalid characters (basic validation)
       if (!/^[1-9A-HJ-NP-Za-km-z]+$/.test(walletAddress)) {
-        console.error('Invalid wallet address format');
         setSubmitError('Invalid wallet address format. Use a valid Solana address or leave blank.');
         return;
       }
     }
 
     if (!userProfile?.uid) {
-      console.error('No user profile or UID found');
-      console.log('Current userProfile:', userProfile);
       setSubmitError('User profile not found. Please log out and log back in.');
       return;
     }
 
     if (userProfile.userType !== 'corporation') {
-      console.error('User is not a corporation');
       setSubmitError('Only corporations can add employees. Please ensure you are logged in as a corporation.');
       return;
     }
@@ -175,7 +168,6 @@ const CorporationDashboard: React.FC = () => {
       });
       setIsAddEmployeeModalOpen(false);
       
-      console.log('Employee added successfully');
     } catch (error) {
       console.error('Error adding employee:', error);
       
@@ -742,8 +734,7 @@ const CorporationDashboard: React.FC = () => {
           <div className="solana-pay-content">
             <SolanaPayDashboard 
               employees={employees}
-              onPaymentCreated={(payment) => {
-                console.log('Payment created:', payment);
+              onPaymentCreated={(_payment) => {
                 // Refresh transactions
                 if (userProfile?.uid) {
                   transactionService.getTransactionsByCorporation(userProfile.uid)
@@ -751,8 +742,7 @@ const CorporationDashboard: React.FC = () => {
                     .catch(console.error);
                 }
               }}
-              onBulkPayrollCreated={(payroll) => {
-                console.log('Bulk payroll created:', payroll);
+              onBulkPayrollCreated={(_payroll) => {
                 // Refresh transactions
                 if (userProfile?.uid) {
                   transactionService.getTransactionsByCorporation(userProfile.uid)
